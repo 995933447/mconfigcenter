@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"https://github.com/995933447/mconfigcenter/common/kv-config","properties":{"Key":{"type":"string"},"Value":{"type":"string"},"Extra":{"type":"string"}},"type":"object"}
