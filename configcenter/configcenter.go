@@ -16,8 +16,8 @@ import (
 	"google.golang.org/grpc"
 )
 
-func PrepareGRPC(dialGRPCOpts ...grpc.DialOption) error {
-	if err := easymicrogrpc.PrepareDiscoverGRPC(context.TODO(), EasymicroGRPCSchema, EasymicroDiscoveryName); err != nil {
+func PrepareGRPC(discoveryName string, dialGRPCOpts ...grpc.DialOption) error {
+	if err := easymicrogrpc.PrepareDiscoverGRPC(context.TODO(), EasymicroGRPCSchema, discoveryName); err != nil {
 		return err
 	}
 
