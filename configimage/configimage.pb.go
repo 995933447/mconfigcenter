@@ -7,9 +7,8 @@
 package configimage
 
 import (
+	_ "github.com/995933447/easymicro/pb"
 	common "github.com/995933447/mconfigcenter/common"
-	_ "github.com/995933447/mconfigcenter/ext"
-	_ "github.com/995933447/mconfigcenter/mgormext"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -364,7 +363,7 @@ var File_configimage_proto protoreflect.FileDescriptor
 
 const file_configimage_proto_rawDesc = "" +
 	"\n" +
-	"\x11configimage.proto\x12\vconfigimage\x1a\text.proto\x1a\x0emgormext.proto\x1a\fcommon.proto\"\xe3\x02\n" +
+	"\x11configimage.proto\x12\vconfigimage\x1a\x13easymicro_ext.proto\x1a\fcommon.proto\"\xe3\x02\n" +
 	"\rListConfigReq\x12\x1b\n" +
 	"\tcoll_name\x18\x01 \x01(\tR\bcollName\x12\x16\n" +
 	"\x06offset\x18\x02 \x01(\rR\x06offset\x12\x14\n" +
