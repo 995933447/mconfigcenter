@@ -12,6 +12,7 @@ import (
 
 func RegisterGRPCDialOpts() {
 	unaryInterceptors := []grpc.UnaryClientInterceptor{
+		interceptor.RecoveryRPCUnaryInterceptor,
 		interceptor.TraceRPCUnaryInterceptor,
 		interceptor.RPCBreakerUnaryInterceptor,
 		interceptor.FastlogRPCUnaryInterceptor,
@@ -21,17 +22,16 @@ func RegisterGRPCDialOpts() {
 			unaryInterceptors = append(unaryInterceptors, interceptor.NatsRPCFallbackInterceptor)
 		}
 	})
-	unaryInterceptors = append(unaryInterceptors, interceptor.RecoveryRPCUnaryInterceptor)
 
 	easymicrogrpc.RegisterGlobalDialOpts(
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithDefaultServiceConfig(fmt.Sprintf(`{"loadBalancingPolicy": "%s"}`, easymicrogrpc.BalancerNameRoundRobin)),
 		grpc.WithChainUnaryInterceptor(unaryInterceptors...),
 		grpc.WithChainStreamInterceptor(
+			interceptor.RecoveryRPCStreamInterceptor,
 			interceptor.TraceRPCStreamInterceptor,
 			interceptor.RPCBreakerStreamInterceptor,
 			interceptor.FastlogRPCStreamInterceptor,
-			interceptor.RecoveryRPCStreamInterceptor,
 		),
 	)
 }
