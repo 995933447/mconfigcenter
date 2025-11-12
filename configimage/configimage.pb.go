@@ -389,7 +389,7 @@ const file_configimage_proto_rawDesc = "" +
 	"\vConfigImage\x12E\n" +
 	"\n" +
 	"ListConfig\x12\x1a.configimage.ListConfigReq\x1a\x1b.configimage.ListConfigResp\x12H\n" +
-	"\vGetKeyValue\x12\x1b.configimage.GetKeyValueReq\x1a\x1c.configimage.GetKeyValueRespBR\x8a\x9d \x1eZ\rmconfigcenterb\rmconfigcenterZ.github.com/995933447/mconfigcenter/configimageb\x06proto3"
+	"\vGetKeyValue\x12\x1b.configimage.GetKeyValueReq\x1a\x1c.configimage.GetKeyValueRespBY\x8a\x9d %Z\x10mconfigcenterimgb\x11mconfigcenter_imgZ.github.com/995933447/mconfigcenter/configimageb\x06proto3"
 
 var (
 	file_configimage_proto_rawDescOnce sync.Once

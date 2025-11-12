@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	EasymicroGRPCSchema    = "mconfigcenter"
-	EasymicroDiscoveryName = "mconfigcenter"
+	EasymicroGRPCSchema    = "mconfigcenterimg"
+	EasymicroDiscoveryName = "mconfigcenter_img"
 )
 
 const EasymicroGRPCPbServiceNameConfigImage = "configimage.ConfigImage"
