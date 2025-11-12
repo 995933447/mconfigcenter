@@ -34,6 +34,7 @@ func main() {
 		log.Fatal(runtimeutil.NewStackErr(err))
 	}
 
+	var discoveryName string
 	config.SafeReadServerConfig(func(c *config.ServerConfig) {
 		if !c.IsProd() {
 			if err := boot.RegisterNatsRPCRoutes(); err != nil {
@@ -41,7 +42,8 @@ func main() {
 			}
 		}
 
-		if err := grpc.PrepareDiscoverGRPC(context.TODO(), c.GetGRPCSchema(), c.GetDiscoveryName()); err != nil {
+		discoveryName = c.GetDiscoveryName()
+		if err := grpc.PrepareDiscoverGRPC(context.TODO(), configcenter.EasymicroGRPCSchema, discoveryName); err != nil {
 			log.Fatal(runtimeutil.NewStackErr(err))
 		}
 	})
@@ -71,7 +73,7 @@ func main() {
 	}
 
 	err = grpc.ServeGRPC(context.TODO(), &grpc.ServeGRPCOptions{
-		DiscoveryName:   configcenter.EasymicroDiscoveryName,
+		DiscoveryName:   discoveryName,
 		ServiceNames:    boot.ServiceNames,
 		StopCtx:         stopCtx,
 		GracefulStopCtx: gracefulStopCtx,
