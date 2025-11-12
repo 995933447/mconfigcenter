@@ -7,8 +7,7 @@
 package biz
 
 import (
-	_ "github.com/995933447/mconfigcenter/ext"
-	_ "github.com/995933447/mconfigcenter/mgormext"
+	_ "github.com/995933447/easymicro/pb"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -107,7 +106,7 @@ var File_biz_proto protoreflect.FileDescriptor
 
 const file_biz_proto_rawDesc = "" +
 	"\n" +
-	"\tbiz.proto\x12\x03biz\x1a\text.proto\x1a\x0emgormext.proto\"\x18\n" +
+	"\tbiz.proto\x12\x03biz\x1a\x13easymicro_ext.proto\"\x18\n" +
 	"\x16GetVipMaxLevelLimitReq\"/\n" +
 	"\x17GetVipMaxLevelLimitResp\x12\x14\n" +
 	"\x05level\x18\x01 \x01(\x05R\x05level2W\n" +
