@@ -23,6 +23,22 @@ type ServerConfig struct {
 	MongoDb                        string `mapstructure:"mongo_db"`
 	MongoConn                      string `mapstructure:"mongo_conn"`
 	PubNotificationNatsConn        string `mapstructure:"pub_notification_nats_conn"`
+	GRPCSchema                     string `mapstructure:"grpc_schema"`
+	DiscoveryName                  string `mapstructure:"discovery_name"`
+}
+
+func (c *ServerConfig) GetGRPCSchema() string {
+	if c.GRPCSchema == "" {
+		return configcenter.EasymicroGRPCSchema
+	}
+	return c.GRPCSchema
+}
+
+func (c *ServerConfig) GetDiscoveryName() string {
+	if c.DiscoveryName == "" {
+		return configcenter.EasymicroDiscoveryName
+	}
+	return c.DiscoveryName
 }
 
 func (c *ServerConfig) GetMongoConn() string {
