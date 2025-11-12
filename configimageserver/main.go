@@ -8,6 +8,7 @@ import (
 
 	"github.com/995933447/easymicro/elect"
 	"github.com/995933447/easymicro/grpc/interceptor"
+	"github.com/995933447/mconfigcenter/configcenter"
 	"github.com/995933447/mconfigcenter/configimage"
 	"github.com/995933447/mconfigcenter/configimageserver/boot"
 	"github.com/995933447/mconfigcenter/configimageserver/config"
@@ -61,17 +62,25 @@ func main() {
 		}()
 	}
 
+	var discoveryName string
 	config.SafeReadServerConfig(func(c *config.ServerConfig) {
 		if !c.IsProd() {
 			if err := boot.RegisterNatsRPCRoutes(); err != nil {
 				log.Fatal(runtimeutil.NewStackErr(err))
 			}
 		}
-	})
 
-	if err := grpc.PrepareDiscoverGRPC(context.TODO(), configimage.EasymicroGRPCSchema, configimage.EasymicroDiscoveryName); err != nil {
-		log.Fatal(runtimeutil.NewStackErr(err))
-	}
+		// 注册自己的grpc服务发现
+		discoveryName = c.GetDiscoveryName()
+		if err := grpc.PrepareDiscoverGRPC(context.TODO(), configimage.EasymicroGRPCSchema, discoveryName); err != nil {
+			log.Fatal(runtimeutil.NewStackErr(err))
+		}
+
+		// 初始化config center的grpc调用准备
+		if err := configcenter.PrepareGRPC(c.GetConfigCenterDiscoveryName()); err != nil {
+			log.Fatal(runtimeutil.NewStackErr(err))
+		}
+	})
 
 	boot.RegisterGRPCDialOpts()
 
@@ -98,7 +107,7 @@ func main() {
 	}
 
 	err = grpc.ServeGRPC(context.TODO(), &grpc.ServeGRPCOptions{
-		DiscoveryName:   configimage.EasymicroDiscoveryName,
+		DiscoveryName:   discoveryName,
 		ServiceNames:    boot.ServiceNames,
 		StopCtx:         stopCtx,
 		GracefulStopCtx: gracefulStopCtx,
@@ -113,14 +122,14 @@ func main() {
 		EnabledHealth:              true,
 		GRPCServerOpts: []ggrpc.ServerOption{
 			ggrpc.ChainUnaryInterceptor(
+				interceptor.RecoveryServeRPCUnaryInterceptor,
 				interceptor.TraceServeRPCUnaryInterceptor,
 				interceptor.FastlogServeRPCUnaryInterceptor,
-				interceptor.RecoveryServeRPCUnaryInterceptor,
 			),
 			ggrpc.ChainStreamInterceptor(
+				interceptor.RecoveryServeRPCStreamInterceptor,
 				interceptor.TraceServeRPCStreamInterceptor,
 				interceptor.FastlogServeRPCStreamInterceptor,
-				interceptor.RecoveryServeRPCStreamInterceptor,
 			),
 		},
 	})
