@@ -6,6 +6,8 @@ import (
 	"strings"
 
 	"github.com/995933447/easymicro/grpc/interceptor"
+	"github.com/995933447/mconfigcenter/configcenter"
+	"github.com/995933447/mconfigcenter/configimage"
 	"github.com/995933447/mconfigcenter/example/biz"
 	"github.com/995933447/mconfigcenter/example/bizserver/boot"
 	"github.com/995933447/mconfigcenter/example/bizserver/config"
@@ -45,6 +47,14 @@ func main() {
 			if err := boot.RegisterNatsRPCRoutes(); err != nil {
 				log.Fatal(err)
 			}
+		}
+
+		if err := configcenter.PrepareGRPC(biz.EasymicroDiscoveryName); err != nil {
+			log.Fatal(err)
+		}
+
+		if err := configimage.PrepareGRPC(biz.EasymicroDiscoveryName); err != nil {
+			log.Fatal(err)
 		}
 	})
 
