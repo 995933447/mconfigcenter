@@ -3,11 +3,11 @@ syntax = "proto3";
 package configcenter;
 option go_package = "github.com/995933447/mconfigcenter/configcenter";
 
-import "ext.proto";
-import "mgormext.proto";
+import "easymicro_ext.proto";
+import "mgorm_ext.proto";
 import "common.proto";
 
-option (ext.proto_gen_opts) = {
+option (easymicro_ext.proto_gen_opts) = {
   disabled_load_redis: true
   disabled_elect: true
   grpc_schema:"mconfigcenter"
@@ -186,10 +186,10 @@ message SetConfigSchemaReq {
 
 // 配置协议
 message ConfigSchema {
-  option (ext.json_schema_output_opts) = {
+  option (easymicro_ext.json_schema_output_opts) = {
     field_name_tag:"bson"
   };
-  option (mgormext.mgorm_opts) = {
+  option (mgorm_ext.mgorm_opts) = {
     conn:"mconfigcenter"
     db:"mconfigcenter"
     tb:"config_schema"

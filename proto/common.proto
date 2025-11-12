@@ -3,14 +3,14 @@ syntax = "proto3";
 package common;
 option go_package = "github.com/995933447/mconfigcenter/common";
 
-import "ext.proto";
-import "mgormext.proto";
+import "easymicro_ext.proto";
+import "mgorm_ext.proto";
 
 message KVConfig {
-  option (ext.json_schema_output_opts) = {
+  option (easymicro_ext.json_schema_output_opts) = {
     field_name_tag:"bson"
   };
-  option (mgormext.mgorm_opts) = {
+  option (mgorm_ext.mgorm_opts) = {
     conn:"mconfigcenter"
     db:"mconfigcenter"
     tb:"kv_config"

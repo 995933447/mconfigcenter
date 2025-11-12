@@ -3,11 +3,10 @@ syntax = "proto3";
 package configimage;
 option go_package = "github.com/995933447/mconfigcenter/configimage";
 
-import "ext.proto";
-import "mgormext.proto";
+import "easymicro_ext.proto";
 import "common.proto";
 
-option (ext.proto_gen_opts) = {
+option (easymicro_ext.proto_gen_opts) = {
   grpc_schema:"mconfigcenterimg"
   discovery_name:"mconfigcenter_img"
 };
