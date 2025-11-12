@@ -7,9 +7,9 @@
 package configcenter
 
 import (
+	_ "github.com/995933447/easymicro/pb"
 	common "github.com/995933447/mconfigcenter/common"
-	_ "github.com/995933447/mconfigcenter/ext"
-	_ "github.com/995933447/mconfigcenter/mgormext"
+	_ "github.com/995933447/mgorm/pb"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -1512,7 +1512,7 @@ var File_configcenter_proto protoreflect.FileDescriptor
 
 const file_configcenter_proto_rawDesc = "" +
 	"\n" +
-	"\x12configcenter.proto\x12\fconfigcenter\x1a\text.proto\x1a\x0emgormext.proto\x1a\fcommon.proto\"\x99\x01\n" +
+	"\x12configcenter.proto\x12\fconfigcenter\x1a\x13easymicro_ext.proto\x1a\x0fmgorm_ext.proto\x1a\fcommon.proto\"\x99\x01\n" +
 	"\x0eSetKeyValueReq\x12(\n" +
 	"\x06config\x18\x01 \x01(\v2\x10.common.KVConfigR\x06config\x126\n" +
 	"\x17should_notify_listeners\x18\x02 \x01(\bR\x15shouldNotifyListeners\x12%\n" +
