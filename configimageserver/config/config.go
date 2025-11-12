@@ -5,6 +5,8 @@ import (
 	"time"
 
 	"github.com/995933447/easymicro/loader"
+	"github.com/995933447/mconfigcenter/configcenter"
+	"github.com/995933447/mconfigcenter/configimage"
 	"github.com/995933447/natsevent"
 )
 
@@ -24,6 +26,22 @@ type ServerConfig struct {
 	SubNotificationNatsConn             string `mapstructure:"sub_notification_nats_conn"`
 	SubNotificationNatsMaxAckWaitSec    int    `mapstructure:"sub_notification_max_ack_wait_sec"`
 	SubNotificationNatsIdleHeartbeatSec int    `mapstructure:"sub_notification_nats_idle_heartbeat"`
+	DiscoveryName                       string `mapstructure:"discovery_name"`
+	ConfigCenterDiscoveryName           string `mapstructure:"config_center_discovery_name"`
+}
+
+func (c *ServerConfig) GetConfigCenterDiscoveryName() string {
+	if c.ConfigCenterDiscoveryName == "" {
+		return configcenter.EasymicroDiscoveryName
+	}
+	return c.ConfigCenterDiscoveryName
+}
+
+func (c *ServerConfig) GetDiscoveryName() string {
+	if c.DiscoveryName == "" {
+		return configimage.EasymicroDiscoveryName
+	}
+	return c.DiscoveryName
 }
 
 func (c *ServerConfig) IsDev() bool {
