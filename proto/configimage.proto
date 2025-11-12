@@ -8,8 +8,8 @@ import "mgormext.proto";
 import "common.proto";
 
 option (ext.proto_gen_opts) = {
-  grpc_schema:"mconfigcenter"
-  discovery_name:"mconfigcenter"
+  grpc_schema:"mconfigcenterimg"
+  discovery_name:"mconfigcenter_img"
 };
 
 service ConfigImage {
