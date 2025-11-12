@@ -3,10 +3,9 @@ syntax = "proto3";
 package biz;
 option go_package = "github.com/995933447/mconfigcenter/example/biz";
 
-import "ext.proto";
-import "mgormext.proto";
+import "easymicro_ext.proto";
 
-option (ext.proto_gen_opts) = {
+option (easymicro_ext.proto_gen_opts) = {
   grpc_schema:"mconfigcenter"
   discovery_name:"mconfigcenter"
 };
