@@ -1,10 +1,3 @@
-mkdir ext
-
-protoc --go_out=./ext --go_opt=paths=source_relative --proto_path=../proto ../proto/ext.proto
-
-mkdir mgormext
-protoc --go_out=./mgormext --go_opt=paths=source_relative --proto_path=../proto ../proto/mgormext.proto
-
 if [ $# -eq 0 ]; then
   echo "not service input"
   exit 0
@@ -24,6 +17,7 @@ protoc --go_out=./$1\
   --easymicro-server_opt=paths=source_relative\
   --mgorm_opt=paths=source_relative\
   --jsonschema_opt=paths=source_relative\
+  --proto_path=../../easymicro/proto\
   --proto_path=../proto\
   --proto_path=./proto\
   $1.proto
