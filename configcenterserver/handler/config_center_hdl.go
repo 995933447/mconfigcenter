@@ -16,17 +16,6 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var idObjOps = map[string]struct{}{
-	"$eq":  {},
-	"$ne":  {},
-	"$gte": {},
-	"$gt":  {},
-	"$lte": {},
-	"$lt":  {},
-	"$in":  {},
-	"$nin": {},
-}
-
 type ConfigCenter struct {
 	configcenter.UnimplementedConfigCenterServer
 	ServiceName string
