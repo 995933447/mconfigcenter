@@ -40,11 +40,11 @@ func main() {
 				log.Fatal(err)
 			}
 		}
-	})
 
-	if err := grpc.PrepareDiscoverGRPC(context.TODO(), configcenter.EasymicroGRPCSchema, configcenter.EasymicroDiscoveryName); err != nil {
-		log.Fatal(runtimeutil.NewStackErr(err))
-	}
+		if err := grpc.PrepareDiscoverGRPC(context.TODO(), c.GetGRPCSchema(), c.GetDiscoveryName()); err != nil {
+			log.Fatal(runtimeutil.NewStackErr(err))
+		}
+	})
 
 	boot.RegisterGRPCDialOpts()
 
@@ -86,14 +86,14 @@ func main() {
 		EnabledHealth:              true,
 		GRPCServerOpts: []ggrpc.ServerOption{
 			ggrpc.ChainUnaryInterceptor(
+				interceptor.RecoveryServeRPCUnaryInterceptor,
 				interceptor.TraceServeRPCUnaryInterceptor,
 				interceptor.FastlogServeRPCUnaryInterceptor,
-				interceptor.RecoveryServeRPCUnaryInterceptor,
 			),
 			ggrpc.ChainStreamInterceptor(
+				interceptor.RecoveryServeRPCStreamInterceptor,
 				interceptor.TraceServeRPCStreamInterceptor,
 				interceptor.FastlogServeRPCStreamInterceptor,
-				interceptor.RecoveryServeRPCStreamInterceptor,
 			),
 		},
 	})
