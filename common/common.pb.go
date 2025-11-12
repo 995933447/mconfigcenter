@@ -7,8 +7,8 @@
 package common
 
 import (
-	_ "github.com/995933447/mconfigcenter/ext"
-	_ "github.com/995933447/mconfigcenter/mgormext"
+	_ "github.com/995933447/easymicro/pb"
+	_ "github.com/995933447/mgorm/pb"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -87,7 +87,7 @@ var File_common_proto protoreflect.FileDescriptor
 
 const file_common_proto_rawDesc = "" +
 	"\n" +
-	"\fcommon.proto\x12\x06common\x1a\text.proto\x1a\x0emgormext.proto\"\x88\x01\n" +
+	"\fcommon.proto\x12\x06common\x1a\x13easymicro_ext.proto\x1a\x0fmgorm_ext.proto\"\x88\x01\n" +
 	"\bKVConfig\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value\x12\x14\n" +
