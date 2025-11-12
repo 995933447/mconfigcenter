@@ -2,46 +2,64 @@ package config
 
 import (
 	"sync"
-	"time"
 
 	"github.com/995933447/easymicro/loader"
 	"github.com/995933447/mconfigcenter/configcenter"
-	"github.com/995933447/mconfigcenter/configimage"
 	"github.com/995933447/natsevent"
 )
 
-const ServerConfigFileName = "configimageserver"
+const ServerConfigFileName = "configcenterserver"
 
 const (
-	DefaultMongoConnName = "mconfigcenter_img"
-	DefaultMongoDbName   = "mconfigcenter_img"
+	ListenerNotificationDirectness                   = ""
+	ListenerNotificationDirectnessThroughImageServer = "throughImageServer"
+	ListenerNotificationDirectnessDirect             = "direct"
 )
 
 type ServerConfig struct {
-	SamplePProfTimeLongSec              int    `mapstructure:"sample_pprof_time_long_sec"`
-	Env                                 string `mapstructure:"env"`
-	MongoDb                             string `mapstructure:"mongo_db"`
-	MongoConn                           string `mapstructure:"mongo_conn"`
-	ListenerGroup                       string `mapstructure:"listener_group"`
-	SubNotificationNatsConn             string `mapstructure:"sub_notification_nats_conn"`
-	SubNotificationNatsMaxAckWaitSec    int    `mapstructure:"sub_notification_max_ack_wait_sec"`
-	SubNotificationNatsIdleHeartbeatSec int    `mapstructure:"sub_notification_nats_idle_heartbeat"`
-	DiscoveryName                       string `mapstructure:"discovery_name"`
-	ConfigCenterDiscoveryName           string `mapstructure:"config_center_discovery_name"`
+	SamplePProfTimeLongSec         int    `mapstructure:"sample_pprof_time_long_sec"`
+	Env                            string `mapstructure:"env"`
+	ListenerNotificationDirectness string `mapstructure:"listener_notification_direct"`
+	MongoDb                        string `mapstructure:"mongo_db"`
+	MongoConn                      string `mapstructure:"mongo_conn"`
+	PubNotificationNatsConn        string `mapstructure:"pub_notification_nats_conn"`
+	GRPCSchema                     string `mapstructure:"grpc_schema"`
+	DiscoveryName                  string `mapstructure:"discovery_name"`
 }
 
-func (c *ServerConfig) GetConfigCenterDiscoveryName() string {
-	if c.ConfigCenterDiscoveryName == "" {
-		return configcenter.EasymicroDiscoveryName
+func (c *ServerConfig) GetGRPCSchema() string {
+	if c.GRPCSchema == "" {
+		return configcenter.EasymicroGRPCSchema
 	}
-	return c.ConfigCenterDiscoveryName
+	return c.GRPCSchema
 }
 
 func (c *ServerConfig) GetDiscoveryName() string {
 	if c.DiscoveryName == "" {
-		return configimage.EasymicroDiscoveryName
+		return configcenter.EasymicroDiscoveryName
 	}
 	return c.DiscoveryName
+}
+
+func (c *ServerConfig) GetMongoConn() string {
+	if c.MongoConn == "" {
+		return configcenter.ConfigSchemaConnName
+	}
+	return c.MongoConn
+}
+
+func (c *ServerConfig) GetMongoDb() string {
+	if c.MongoDb == "" {
+		return configcenter.ConfigSchemaDbName
+	}
+	return c.MongoDb
+}
+
+func (c *ServerConfig) GetPubNotificationNatsConn() string {
+	if c.PubNotificationNatsConn == "" {
+		return natsevent.ConnNameDefault
+	}
+	return c.PubNotificationNatsConn
 }
 
 func (c *ServerConfig) IsDev() bool {
@@ -54,35 +72,6 @@ func (c *ServerConfig) IsTest() bool {
 
 func (c *ServerConfig) IsProd() bool {
 	return c.Env == "prod"
-}
-
-func (c *ServerConfig) GetMongoConn() string {
-	if c.MongoConn == "" {
-		return DefaultMongoConnName
-	}
-	return c.MongoConn
-}
-
-func (c *ServerConfig) GetMongoDb() string {
-	if c.MongoDb == "" {
-		return DefaultMongoDbName
-	}
-	return c.MongoDb
-}
-
-func (c *ServerConfig) GetSubNotificationNatsConn() string {
-	if c.SubNotificationNatsConn == "" {
-		return natsevent.ConnNameDefault
-	}
-	return c.SubNotificationNatsConn
-}
-
-func (c *ServerConfig) GetSubNotificationNatsMaxAckWait() time.Duration {
-	return time.Duration(c.SubNotificationNatsMaxAckWaitSec) * time.Second
-}
-
-func (c *ServerConfig) GetSubNotificationNatsIdleHeartbeat() time.Duration {
-	return time.Duration(c.SubNotificationNatsIdleHeartbeatSec) * time.Second
 }
 
 var (
@@ -126,10 +115,6 @@ func LoadConfig() error {
 	}
 
 	if err = loader.LoadNatsFromLocal(); err != nil {
-		return err
-	}
-
-	if err = loader.LoadAndWatchRedisFromLocal(); err != nil {
 		return err
 	}
 
