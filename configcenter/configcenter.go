@@ -31,7 +31,7 @@ func PrepareGRPC(discoveryName string, dialGRPCOpts ...grpc.DialOption) error {
 }
 
 func InitReconfmgrReloader(subscriberName, listenerGroup string, opts ...natsevent.ApplySubOptsFunc) error {
-	return natsevent.Subscribe(EventNameConfigChanged, subscriberName, func(evt *ConfigChangedEvent) error {
+	return natsevent.SubscribeBroadcast(EventNameConfigChanged, subscriberName, func(evt *ConfigChangedEvent) error {
 		if listenerGroup != evt.RefreshListenerGroup {
 			return nil
 		}
