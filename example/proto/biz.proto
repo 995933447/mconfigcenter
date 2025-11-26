@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package biz;
+option go_package = "github.com/995933447/mconfigcenter/example/biz";
+
+import "easymicro_ext.proto";
+
+option (easymicro_ext.proto_gen_opts) = {
+  grpc_schema:"mconfigcenter"
+  discovery_name:"mconfigcenter"
+};
+
+service Biz {
+  rpc GetVipMaxLevelLimit(GetVipMaxLevelLimitReq) returns (GetVipMaxLevelLimitResp);
+}
+
+message GetVipMaxLevelLimitReq {
+
+}
+
+message GetVipMaxLevelLimitResp {
+  int32 level = 1;
+}

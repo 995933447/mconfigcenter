@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package common;
+option go_package = "github.com/995933447/mconfigcenter/common";
+
+import "easymicro_ext.proto";
+import "mgorm_ext.proto";
+
+message KVConfig {
+  option (easymicro_ext.json_schema_output_opts) = {
+    field_name_tag:"bson"
+  };
+  option (mgorm_ext.mgorm_opts) = {
+    conn:"mconfigcenter"
+    db:"mconfigcenter"
+    tb:"kv_config"
+    disabled_auto_expire_at:true
+    uniq_index_keys: ["key"]
+  };
+  string key = 1;
+  string value = 2;
+  string extra = 3;
+}

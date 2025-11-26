@@ -1,0 +1,10 @@
+{
+  "sample_pprof_time_long_sec": 20,
+  "env": "dev",
+  "mongo_db": "mconfigcenter_img",
+  "mongo_conn": "mconfigcenter_img",
+  "pub_notification_nats_conn": "default",
+  "listener_group": "ecommerce",
+  "discovery_name": "mconfigcenter"
+}
+

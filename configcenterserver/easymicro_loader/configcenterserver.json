@@ -1,0 +1,8 @@
+{
+  "sample_pprof_time_long_sec": 20,
+  "env": "dev",
+  "listener_notification_direct": "throughImageServer",
+  "pub_notification_nats_conn": "default",
+  "mongo_db":"",
+  "mongo_conn":""
+}

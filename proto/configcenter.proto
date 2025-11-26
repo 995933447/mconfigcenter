@@ -1,0 +1,214 @@
+syntax = "proto3";
+
+package configcenter;
+option go_package = "github.com/995933447/mconfigcenter/configcenter";
+
+import "easymicro_ext.proto";
+import "mgorm_ext.proto";
+import "common.proto";
+
+option (easymicro_ext.proto_gen_opts) = {
+  disabled_load_redis: true
+  disabled_elect: true
+  grpc_schema:"mconfigcenter"
+  discovery_name:"mconfigcenter"
+};
+
+enum ErrCode {
+  ErrCodeNil = 0;
+  ErrCodeParamInvalid = 1001;
+  ErrCodeConfigSchemaNotFound = 1002;
+  ErrCodeValidateSchemaFailed = 1003;
+  ErrCodeConfigNotFound = 1004;
+}
+
+// 基于mongo db存储实现的配置中心服务
+service ConfigCenter {
+  // 添加一条配置到配置集合中
+  rpc AddConfig(AddConfigReq) returns (AddConfigResp);
+
+  // 披露添加配置到配置集合中
+  rpc AddConfigs(AddConfigsReq) returns (AddConfigsResp);
+
+  // 更新一条集合中的配置
+  rpc UpdateConfig(UpdateConfigReq) returns (UpdateConfigResp);
+
+  // 批量更新配置到集合中
+  rpc UpdateConfigs(UpdateConfigsReq) returns (UpdateConfigsResp);
+
+  // 删除一条集合中的配置
+  rpc DeleteConfig(DeleteConfigReq) returns (DeleteConfigResp);
+
+  // 批量删除集合中的配置
+  rpc DeleteConfigs(DeleteConfigsReq) returns (DeleteConfigsResp);
+
+  // 获取配置集合
+  rpc ListConfig(ListConfigReq) returns (ListConfigResp);
+
+  // 通知监听者重载配置
+  rpc NotifyListenersReloadConfig(NotifyListenersReloadConfigReq) returns (NotifyListenersReloadConfigResp);
+
+  // 设置配置协议
+  rpc SetConfigSchema(SetConfigSchemaReq) returns (SetConfigSchemaResp);
+
+  // 获取配置协议
+  rpc GetConfigSchema(GetConfigSchemaReq) returns (GetConfigSchemaResp);
+
+  // 设置键值配置
+  rpc SetKeyValue(SetKeyValueReq) returns (SetKeyValueResp);
+
+  // 获取键值配置
+  rpc GetKeyValue(GetKeyValueReq) returns (GetKeyValueResp);
+}
+
+message SetKeyValueReq {
+  common.KVConfig config = 1;
+  bool should_notify_listeners = 2; // 是否立刻通知配置监听者
+  string listener_group = 3; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+}
+
+message SetKeyValueResp {
+
+}
+
+message GetKeyValueReq {
+  string key = 1;
+}
+
+message GetKeyValueResp {
+  common.KVConfig config = 1;
+  string id = 2;
+}
+
+message AddConfigsReq {
+  string coll_name = 1; // 配置集合的名称
+  repeated bytes values = 2; // 具体配置列表
+  bool should_notify_listeners = 3; // 是否立刻通知配置监听者
+  string listener_group = 4; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+}
+
+message AddConfigsResp {
+  repeated string config_ids = 1; // 新增的配置id列表
+}
+
+message UpdateConfigsReq {
+  string coll_name = 1; // 配置集合的名称
+  repeated string ids = 2; // 配置id
+  bytes value = 3; // 具体配置
+  bool should_notify_listeners = 4; // 是否立刻通知配置监听者
+  string listener_group = 5; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+}
+
+message UpdateConfigsResp {
+
+}
+
+message AddConfigReq {
+  string coll_name = 1; // 配置集合的名称
+  bytes value = 2; // 具体配置
+  bool should_notify_listeners = 3; // 是否立刻通知配置监听者
+  string listener_group = 4; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+}
+
+message AddConfigResp {
+  string config_id = 1; // 新增的配置id
+}
+
+message UpdateConfigReq {
+  string coll_name = 1; // 配置集合的名称
+  string id = 2; // 配置id
+  bytes value = 3; // 具体配置
+  bool should_notify_listeners = 4; // 是否立刻通知配置监听者
+  string listener_group = 5; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+}
+
+message UpdateConfigResp {
+}
+
+message DeleteConfigReq {
+  string coll_name = 1; // 配合集合的名称
+  string id = 2; // 配置id
+  bool should_notify_listeners = 3; // 是否立刻通知配置监听者
+  string listener_group = 4; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+}
+
+message DeleteConfigResp {
+}
+
+message DeleteConfigsReq {
+  string coll_name = 1; // 配合集合的名称
+  repeated string ids = 2; // 配置id
+  bool should_notify_listeners = 3; // 是否立刻通知配置监听者
+  string listener_group = 4; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+}
+
+message DeleteConfigsResp {
+
+}
+
+message ListConfigReq {
+  message Sort {
+    string field = 1; // 排序字段
+    int32 sort_way = 2; // 排序方式，1升序或者-1降序
+  }
+
+  message Selector {
+    string field = 1;
+    int32 selected = 2;
+  }
+
+  string coll_name = 1; // 集合名称
+  uint32 offset = 2; // 位移
+  uint32 limit = 3; // 条数
+  repeated Sort sorts = 4; // 排序
+  bytes filter = 5; // 过滤
+  repeated Selector selectors = 6; // 字段
+}
+
+message ListConfigResp {
+  repeated bytes list = 1; // 列表
+  uint32 total = 2; // 总条数
+}
+
+message NotifyListenersReloadConfigReq {
+  string listener_group = 1; // 需要通知的监听者组别,由配置发布方根据业务自定义,非必需
+  repeated string coll_names = 2; // 集合名称
+  bool should_reload_all = 3; // 是否需要全量同步
+}
+
+message NotifyListenersReloadConfigResp {
+}
+
+message SetConfigSchemaReq {
+  ConfigSchema schema = 1; // 配置协议
+  bool async_create_indexes = 2; // 是否异步创建配置集合版本
+}
+
+// 配置协议
+message ConfigSchema {
+  option (easymicro_ext.json_schema_output_opts) = {
+    field_name_tag:"bson"
+  };
+  option (mgorm_ext.mgorm_opts) = {
+    conn:"mconfigcenter"
+    db:"mconfigcenter"
+    tb:"config_schema"
+    disabled_auto_expire_at:true
+    uniq_index_keys:["coll_name"]
+  };
+  string coll_name = 1; // 集合名称
+  repeated string index_keys = 2; // 普通索引键
+  repeated string uniq_index_keys = 3; // 唯一索引键
+  string json_schema = 4; // json schema
+}
+
+message SetConfigSchemaResp {
+}
+
+message GetConfigSchemaReq {
+  string coll_name = 1; // 集合名称
+}
+
+message GetConfigSchemaResp {
+  ConfigSchema schema = 1; // 配置协议
+}
