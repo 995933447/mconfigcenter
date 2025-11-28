@@ -1,3 +1,3 @@
-easymicro_loader/mconfigcenter/*
-easymicro_loader/mconfigimage/*
-example/easymicro_loader/*
+easymicro_loader/configcenter
+easymicro_loader/configimage
+example/easymicro_loader
