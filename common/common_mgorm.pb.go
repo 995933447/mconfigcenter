@@ -3,7 +3,6 @@ package common
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"time"
 
@@ -30,9 +29,9 @@ var kVConfigExpireIndexKeys = []string{}
 
 type KVConfigOrm struct {
 	ID        primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	Key       string             `json:"key,omitempty" bson:"key,omitempty"`
-	Value     string             `json:"value,omitempty" bson:"value,omitempty"`
-	Extra     string             `json:"extra,omitempty" bson:"extra,omitempty"`
+	Key       string             `json:"key" bson:"key"`
+	Value     string             `json:"value" bson:"value"`
+	Extra     string             `json:"extra" bson:"extra"`
 	CreatedAt time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdatedAt time.Time          `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
@@ -216,7 +215,7 @@ func (m *KVConfigModel) UpdateOneByKey(ctx context.Context, key string, update b
 	err := m.Model.FindOneByCacheKey(ctx, filter, cacheKey, &data)
 	if err == nil {
 		defer m.Model.DelCache(m.GetCacheKeys(&data))
-	} else if !errors.Is(err, mongo.ErrNoDocuments) {
+	} else if err != mongo.ErrNoDocuments {
 		return nil, err
 	}
 
@@ -250,7 +249,7 @@ func (m *KVConfigModel) DeleteOneByKey(ctx context.Context, key string) (*mongo.
 	err := m.Model.FindOneByCacheKey(ctx, filter, cacheKey, &data)
 	if err == nil {
 		defer m.Model.DelCache(m.GetCacheKeys(&data))
-	} else if !errors.Is(err, mongo.ErrNoDocuments) {
+	} else if err != mongo.ErrNoDocuments {
 		return nil, err
 	}
 	return m.Model.DeleteOne(ctx, filter)

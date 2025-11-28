@@ -2,14 +2,16 @@ package rpctest
 
 import (
 	"testing"
+	"time"
+
+	"context"
+	"log"
 
 	"github.com/995933447/easymicro/grpc"
 	"github.com/995933447/mconfigcenter/common"
 	"github.com/995933447/runtimeutil"
 	"go.mongodb.org/mongo-driver/bson"
-
-	"context"
-	"log"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	"github.com/995933447/mconfigcenter/configcenter"
 	"github.com/995933447/mconfigcenter/configcenterserver/boot"
@@ -60,9 +62,12 @@ func TestConfigCenterHdlUpdateConfigs(t *testing.T) {
 func TestConfigCenterHdlUpdateConfig(t *testing.T) {
 	InitEnv()
 
-	data := &common.KVConfig{
-		Key:   "foo",
-		Value: "barbarbar",
+	idObj, _ := primitive.ObjectIDFromHex("691257d5500d45ff4c71919d")
+	data := &common.KVConfigOrm{
+		Key:       "foo",
+		Value:     "barbarbar",
+		ID:        idObj,
+		CreatedAt: time.Now(),
 	}
 
 	b, err := bson.Marshal(data)

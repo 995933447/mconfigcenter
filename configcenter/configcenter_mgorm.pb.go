@@ -29,10 +29,10 @@ var configSchemaExpireIndexKeys = []string{}
 
 type ConfigSchemaOrm struct {
 	ID            primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	CollName      string             `json:"coll_name,omitempty" bson:"coll_name,omitempty"`
-	IndexKeys     []string           `json:"index_keys,omitempty" bson:"index_keys,omitempty"`
-	UniqIndexKeys []string           `json:"uniq_index_keys,omitempty" bson:"uniq_index_keys,omitempty"`
-	JsonSchema    string             `json:"json_schema,omitempty" bson:"json_schema,omitempty"`
+	CollName      string             `json:"coll_name" bson:"coll_name"`
+	IndexKeys     []string           `json:"index_keys" bson:"index_keys"`
+	UniqIndexKeys []string           `json:"uniq_index_keys" bson:"uniq_index_keys"`
+	JsonSchema    string             `json:"json_schema" bson:"json_schema"`
 	CreatedAt     time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdatedAt     time.Time          `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }

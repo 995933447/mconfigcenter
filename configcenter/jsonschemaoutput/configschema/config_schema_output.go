@@ -39,5 +39,5 @@ func Output() *jsonschema.Schema {
 	r.AllowAdditionalProperties = true
 	r.RequiredFromJSONSchemaTags = true
 	r.FieldNameTag = "bson"
-	return r.Reflect(&configcenter.ConfigSchema{})
+	return r.Reflect(&configcenter.ConfigSchemaOrm{})
 }
