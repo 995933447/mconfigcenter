@@ -35,6 +35,8 @@ func (s *ConfigCenter) UpdateConfigs(ctx context.Context, req *configcenter.Upda
 		return nil, grpc.NewRPCErrWithMsg(configcenter.ErrCode_ErrCodeParamInvalid, fmt.Sprintf("value parse failed, err:%v", err))
 	}
 
+	delete(m, "_id")
+
 	if err = s.validateSchema(ctx, req.CollName, m); err != nil {
 		return nil, grpc.NewRPCErrWithMsg(configcenter.ErrCode_ErrCodeValidateSchemaFailed, err.Error())
 	}

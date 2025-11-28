@@ -62,7 +62,7 @@ func TestConfigCenterHdlUpdateConfigs(t *testing.T) {
 func TestConfigCenterHdlUpdateConfig(t *testing.T) {
 	InitEnv()
 
-	idObj, _ := primitive.ObjectIDFromHex("691257d5500d45ff4c71919d")
+	idObj, _ := primitive.ObjectIDFromHex("692a068bfd276f6193e41bff")
 	data := &common.KVConfigOrm{
 		Key:       "foo",
 		Value:     "barbarbar",
@@ -76,7 +76,7 @@ func TestConfigCenterHdlUpdateConfig(t *testing.T) {
 	}
 
 	resp, err := configcenter.ConfigCenterGRPC().UpdateConfig(context.Background(), &configcenter.UpdateConfigReq{
-		Id:                    "691257d5500d45ff4c71919d",
+		Id:                    "692a068bfd276f6193e41bff",
 		CollName:              "kv_config",
 		Value:                 b,
 		ShouldNotifyListeners: true,

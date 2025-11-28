@@ -29,10 +29,21 @@ func (s *ConfigCenter) AddConfigs(ctx context.Context, req *configcenter.AddConf
 	)
 	for _, v := range req.Values {
 		m := bson.M{}
-		
+
 		err := bson.Unmarshal(v, m)
 		if err != nil {
 			return nil, grpc.NewRPCErrWithMsg(configcenter.ErrCode_ErrCodeParamInvalid, fmt.Sprintf("value parse failed, err:%v", err))
+		}
+
+		var id primitive.ObjectID
+		if idStr, ok := m["_id"]; !ok {
+			id = primitive.NewObjectID()
+		} else {
+			id, err = primitive.ObjectIDFromHex(idStr.(string))
+			if err != nil || id.IsZero() {
+				id = primitive.NewObjectID()
+			}
+			delete(m, "_id")
 		}
 
 		if err = s.validateSchema(ctx, req.CollName, m); err != nil {
@@ -41,22 +52,9 @@ func (s *ConfigCenter) AddConfigs(ctx context.Context, req *configcenter.AddConf
 
 		m["created_at"] = time.Now()
 		m["updated_at"] = time.Now()
+		m["_id"] = id
 
-		var objId primitive.ObjectID
-		if idStr, ok := m["_id"]; !ok {
-			objId = primitive.NewObjectID()
-			m["_id"] = objId
-		} else {
-			objId, err = primitive.ObjectIDFromHex(idStr.(string))
-			if err != nil || objId.IsZero() {
-				objId = primitive.NewObjectID()
-				m["_id"] = objId
-			} else {
-				m["_id"] = objId
-			}
-		}
-
-		ids = append(ids, objId.Hex())
+		ids = append(ids, id.Hex())
 		values = append(values, m)
 	}
 

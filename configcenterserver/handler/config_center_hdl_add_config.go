@@ -29,26 +29,24 @@ func (s *ConfigCenter) AddConfig(ctx context.Context, req *configcenter.AddConfi
 		return nil, grpc.NewRPCErrWithMsg(configcenter.ErrCode_ErrCodeParamInvalid, fmt.Sprintf("value parse failed, err:%v", err))
 	}
 
+	var id primitive.ObjectID
+	if idStr, ok := m["_id"]; !ok {
+		id = primitive.NewObjectID()
+	} else {
+		id, err = primitive.ObjectIDFromHex(idStr.(string))
+		if err != nil || id.IsZero() {
+			id = primitive.NewObjectID()
+		}
+		delete(m, "_id")
+	}
+
 	if err = s.validateSchema(ctx, req.CollName, m); err != nil {
 		return nil, grpc.NewRPCErrWithMsg(configcenter.ErrCode_ErrCodeValidateSchemaFailed, err.Error())
 	}
 
 	m["created_at"] = time.Now()
 	m["updated_at"] = time.Now()
-
-	var id primitive.ObjectID
-	if idStr, ok := m["_id"]; !ok {
-		id = primitive.NewObjectID()
-		m["_id"] = id
-	} else {
-		id, err = primitive.ObjectIDFromHex(idStr.(string))
-		if err != nil || id.IsZero() {
-			id = primitive.NewObjectID()
-			m["_id"] = id
-		} else {
-			m["_id"] = id
-		}
-	}
+	m["_id"] = id
 
 	_, err = s.newGeneralModel(req.CollName).InsertOne(ctx, m)
 	if err != nil {
