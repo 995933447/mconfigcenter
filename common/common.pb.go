@@ -87,12 +87,12 @@ var File_common_proto protoreflect.FileDescriptor
 
 const file_common_proto_rawDesc = "" +
 	"\n" +
-	"\fcommon.proto\x12\x06common\x1a\x13easymicro_ext.proto\x1a\x0fmgorm_ext.proto\"\x88\x01\n" +
+	"\fcommon.proto\x12\x06common\x1a\x13easymicro_ext.proto\x1a\x0fmgorm_ext.proto\"\x9a\x01\n" +
 	"\bKVConfig\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value\x12\x14\n" +
-	"\x05extra\x18\x03 \x01(\tR\x05extra:>\x8a\x9d \x06\"\x04bson\x8a\x8e%0\n" +
-	"\rmconfigcenter\x12\rmconfigcenter\x1a\tkv_config:\x03keyP\x01B+Z)github.com/995933447/mconfigcenter/commonb\x06proto3"
+	"\x05extra\x18\x03 \x01(\tR\x05extra:P\x8a\x9d \x06\"\x04bson\x8a\x8e%B\n" +
+	"\rmconfigcenter\x12\rmconfigcenter\x1a\tkv_config:\x03keyP\x01\x9a\x01\x0fkey value配置B+Z)github.com/995933447/mconfigcenter/commonb\x06proto3"
 
 var (
 	file_common_proto_rawDescOnce sync.Once

@@ -16,12 +16,12 @@ import (
 	"google.golang.org/grpc"
 )
 
-func PrepareGRPC(discoveryName string, dialGRPCOpts ...grpc.DialOption) error {
+func PrepareGRPC(ctx context.Context, discoveryName string, dialGRPCOpts ...grpc.DialOption) error {
 	if discoveryName == "" {
 		discoveryName = EasymicroDiscoveryName
 	}
 
-	if err := easymicrogrpc.PrepareDiscoverGRPC(context.TODO(), EasymicroGRPCSchema, discoveryName); err != nil {
+	if err := easymicrogrpc.PrepareDiscoverGRPC(ctx, EasymicroGRPCSchema, discoveryName); err != nil {
 		return err
 	}
 

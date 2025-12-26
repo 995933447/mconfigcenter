@@ -27,6 +27,7 @@ func (s *ConfigCenter) GetConfigSchema(ctx context.Context, req *configcenter.Ge
 	resp.Schema.IndexKeys = schema.IndexKeys
 	resp.Schema.UniqIndexKeys = schema.UniqIndexKeys
 	resp.Schema.CollName = schema.CollName
+	resp.Schema.Desc = schema.Desc
 
 	return &resp, nil
 }

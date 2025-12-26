@@ -49,7 +49,7 @@ func main() {
 			}
 		}
 
-		if err := configcenter.PrepareGRPC(biz.EasymicroDiscoveryName); err != nil {
+		if err := configcenter.PrepareGRPC(context.TODO(), biz.EasymicroDiscoveryName); err != nil {
 			log.Fatal(runtimeutil.NewStackErr(err))
 		}
 

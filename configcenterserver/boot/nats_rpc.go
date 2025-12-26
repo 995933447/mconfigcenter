@@ -5,6 +5,8 @@ import (
 	"github.com/995933447/easymicro/nats"
 	"github.com/995933447/mconfigcenter/configcenter"
 	"github.com/995933447/mconfigcenter/configcenterserver/handler"
+
+	"github.com/995933447/easymicro/grpc/middleservice/healthreporter"
 )
 
 func RegisterNatsRPCRoutes() error {
@@ -89,6 +91,20 @@ func RegisterNatsRPCRoutes() error {
 
 	err = nats.HandleLikeGRPC(configcenter.EasymicroGRPCPbServiceNameConfigCenter, "GetKeyValue", handler.ConfigCenterHandler.GetKeyValue, func() *configcenter.GetKeyValueReq {
 		return &configcenter.GetKeyValueReq{}
+	})
+	if err != nil {
+		return err
+	}
+
+	err = nats.HandleLikeGRPC(configcenter.EasymicroGRPCPbServiceNameConfigCenter, "ListConfigSchema", handler.ConfigCenterHandler.ListConfigSchema, func() *configcenter.ListConfigSchemaReq {
+		return &configcenter.ListConfigSchemaReq{}
+	})
+	if err != nil {
+		return err
+	}
+
+	err = nats.HandleLikeGRPC("healthreporter.HealthReporter", "Ping", healthreporter.NewReporter(ServiceNames).Ping, func() *healthreporter.PingReq {
+		return &healthreporter.PingReq{}
 	})
 	if err != nil {
 		return err

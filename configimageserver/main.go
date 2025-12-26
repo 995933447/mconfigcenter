@@ -77,7 +77,7 @@ func main() {
 		}
 
 		// 初始化config center的grpc调用准备
-		if err := configcenter.PrepareGRPC(c.GetConfigCenterDiscoveryName()); err != nil {
+		if err := configcenter.PrepareGRPC(context.TODO(), c.GetConfigCenterDiscoveryName()); err != nil {
 			log.Fatal(runtimeutil.NewStackErr(err))
 		}
 	})

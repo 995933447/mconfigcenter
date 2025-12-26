@@ -31,6 +31,7 @@ const (
 	ConfigCenter_GetConfigSchema_FullMethodName             = "/configcenter.ConfigCenter/GetConfigSchema"
 	ConfigCenter_SetKeyValue_FullMethodName                 = "/configcenter.ConfigCenter/SetKeyValue"
 	ConfigCenter_GetKeyValue_FullMethodName                 = "/configcenter.ConfigCenter/GetKeyValue"
+	ConfigCenter_ListConfigSchema_FullMethodName            = "/configcenter.ConfigCenter/ListConfigSchema"
 )
 
 // ConfigCenterClient is the client API for ConfigCenter service.
@@ -63,6 +64,8 @@ type ConfigCenterClient interface {
 	SetKeyValue(ctx context.Context, in *SetKeyValueReq, opts ...grpc.CallOption) (*SetKeyValueResp, error)
 	// 获取键值配置
 	GetKeyValue(ctx context.Context, in *GetKeyValueReq, opts ...grpc.CallOption) (*GetKeyValueResp, error)
+	// 获取配置协议列表
+	ListConfigSchema(ctx context.Context, in *ListConfigSchemaReq, opts ...grpc.CallOption) (*ListConfigSchemaResp, error)
 }
 
 type configCenterClient struct {
@@ -193,6 +196,16 @@ func (c *configCenterClient) GetKeyValue(ctx context.Context, in *GetKeyValueReq
 	return out, nil
 }
 
+func (c *configCenterClient) ListConfigSchema(ctx context.Context, in *ListConfigSchemaReq, opts ...grpc.CallOption) (*ListConfigSchemaResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListConfigSchemaResp)
+	err := c.cc.Invoke(ctx, ConfigCenter_ListConfigSchema_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ConfigCenterServer is the server API for ConfigCenter service.
 // All implementations must embed UnimplementedConfigCenterServer
 // for forward compatibility.
@@ -223,6 +236,8 @@ type ConfigCenterServer interface {
 	SetKeyValue(context.Context, *SetKeyValueReq) (*SetKeyValueResp, error)
 	// 获取键值配置
 	GetKeyValue(context.Context, *GetKeyValueReq) (*GetKeyValueResp, error)
+	// 获取配置协议列表
+	ListConfigSchema(context.Context, *ListConfigSchemaReq) (*ListConfigSchemaResp, error)
 	mustEmbedUnimplementedConfigCenterServer()
 }
 
@@ -268,6 +283,9 @@ func (UnimplementedConfigCenterServer) SetKeyValue(context.Context, *SetKeyValue
 }
 func (UnimplementedConfigCenterServer) GetKeyValue(context.Context, *GetKeyValueReq) (*GetKeyValueResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetKeyValue not implemented")
+}
+func (UnimplementedConfigCenterServer) ListConfigSchema(context.Context, *ListConfigSchemaReq) (*ListConfigSchemaResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListConfigSchema not implemented")
 }
 func (UnimplementedConfigCenterServer) mustEmbedUnimplementedConfigCenterServer() {}
 func (UnimplementedConfigCenterServer) testEmbeddedByValue()                      {}
@@ -506,6 +524,24 @@ func _ConfigCenter_GetKeyValue_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ConfigCenter_ListConfigSchema_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListConfigSchemaReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConfigCenterServer).ListConfigSchema(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ConfigCenter_ListConfigSchema_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConfigCenterServer).ListConfigSchema(ctx, req.(*ListConfigSchemaReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ConfigCenter_ServiceDesc is the grpc.ServiceDesc for ConfigCenter service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -560,6 +596,10 @@ var ConfigCenter_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetKeyValue",
 			Handler:    _ConfigCenter_GetKeyValue_Handler,
+		},
+		{
+			MethodName: "ListConfigSchema",
+			Handler:    _ConfigCenter_ListConfigSchema_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -79,6 +79,86 @@ func (ErrCode) EnumDescriptor() ([]byte, []int) {
 	return file_configcenter_proto_rawDescGZIP(), []int{0}
 }
 
+type ListConfigSchemaReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListConfigSchemaReq) Reset() {
+	*x = ListConfigSchemaReq{}
+	mi := &file_configcenter_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListConfigSchemaReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListConfigSchemaReq) ProtoMessage() {}
+
+func (x *ListConfigSchemaReq) ProtoReflect() protoreflect.Message {
+	mi := &file_configcenter_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListConfigSchemaReq.ProtoReflect.Descriptor instead.
+func (*ListConfigSchemaReq) Descriptor() ([]byte, []int) {
+	return file_configcenter_proto_rawDescGZIP(), []int{0}
+}
+
+type ListConfigSchemaResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	List          []*ConfigSchema        `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListConfigSchemaResp) Reset() {
+	*x = ListConfigSchemaResp{}
+	mi := &file_configcenter_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListConfigSchemaResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListConfigSchemaResp) ProtoMessage() {}
+
+func (x *ListConfigSchemaResp) ProtoReflect() protoreflect.Message {
+	mi := &file_configcenter_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListConfigSchemaResp.ProtoReflect.Descriptor instead.
+func (*ListConfigSchemaResp) Descriptor() ([]byte, []int) {
+	return file_configcenter_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ListConfigSchemaResp) GetList() []*ConfigSchema {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
 type SetKeyValueReq struct {
 	state                 protoimpl.MessageState `protogen:"open.v1"`
 	Config                *common.KVConfig       `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
@@ -90,7 +170,7 @@ type SetKeyValueReq struct {
 
 func (x *SetKeyValueReq) Reset() {
 	*x = SetKeyValueReq{}
-	mi := &file_configcenter_proto_msgTypes[0]
+	mi := &file_configcenter_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -102,7 +182,7 @@ func (x *SetKeyValueReq) String() string {
 func (*SetKeyValueReq) ProtoMessage() {}
 
 func (x *SetKeyValueReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[0]
+	mi := &file_configcenter_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -115,7 +195,7 @@ func (x *SetKeyValueReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetKeyValueReq.ProtoReflect.Descriptor instead.
 func (*SetKeyValueReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{0}
+	return file_configcenter_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *SetKeyValueReq) GetConfig() *common.KVConfig {
@@ -147,7 +227,7 @@ type SetKeyValueResp struct {
 
 func (x *SetKeyValueResp) Reset() {
 	*x = SetKeyValueResp{}
-	mi := &file_configcenter_proto_msgTypes[1]
+	mi := &file_configcenter_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -159,7 +239,7 @@ func (x *SetKeyValueResp) String() string {
 func (*SetKeyValueResp) ProtoMessage() {}
 
 func (x *SetKeyValueResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[1]
+	mi := &file_configcenter_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -172,7 +252,7 @@ func (x *SetKeyValueResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetKeyValueResp.ProtoReflect.Descriptor instead.
 func (*SetKeyValueResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{1}
+	return file_configcenter_proto_rawDescGZIP(), []int{3}
 }
 
 type GetKeyValueReq struct {
@@ -184,7 +264,7 @@ type GetKeyValueReq struct {
 
 func (x *GetKeyValueReq) Reset() {
 	*x = GetKeyValueReq{}
-	mi := &file_configcenter_proto_msgTypes[2]
+	mi := &file_configcenter_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -196,7 +276,7 @@ func (x *GetKeyValueReq) String() string {
 func (*GetKeyValueReq) ProtoMessage() {}
 
 func (x *GetKeyValueReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[2]
+	mi := &file_configcenter_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -209,7 +289,7 @@ func (x *GetKeyValueReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKeyValueReq.ProtoReflect.Descriptor instead.
 func (*GetKeyValueReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{2}
+	return file_configcenter_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetKeyValueReq) GetKey() string {
@@ -229,7 +309,7 @@ type GetKeyValueResp struct {
 
 func (x *GetKeyValueResp) Reset() {
 	*x = GetKeyValueResp{}
-	mi := &file_configcenter_proto_msgTypes[3]
+	mi := &file_configcenter_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -241,7 +321,7 @@ func (x *GetKeyValueResp) String() string {
 func (*GetKeyValueResp) ProtoMessage() {}
 
 func (x *GetKeyValueResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[3]
+	mi := &file_configcenter_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -254,7 +334,7 @@ func (x *GetKeyValueResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKeyValueResp.ProtoReflect.Descriptor instead.
 func (*GetKeyValueResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{3}
+	return file_configcenter_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetKeyValueResp) GetConfig() *common.KVConfig {
@@ -283,7 +363,7 @@ type AddConfigsReq struct {
 
 func (x *AddConfigsReq) Reset() {
 	*x = AddConfigsReq{}
-	mi := &file_configcenter_proto_msgTypes[4]
+	mi := &file_configcenter_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -295,7 +375,7 @@ func (x *AddConfigsReq) String() string {
 func (*AddConfigsReq) ProtoMessage() {}
 
 func (x *AddConfigsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[4]
+	mi := &file_configcenter_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -308,7 +388,7 @@ func (x *AddConfigsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddConfigsReq.ProtoReflect.Descriptor instead.
 func (*AddConfigsReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{4}
+	return file_configcenter_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *AddConfigsReq) GetCollName() string {
@@ -348,7 +428,7 @@ type AddConfigsResp struct {
 
 func (x *AddConfigsResp) Reset() {
 	*x = AddConfigsResp{}
-	mi := &file_configcenter_proto_msgTypes[5]
+	mi := &file_configcenter_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -360,7 +440,7 @@ func (x *AddConfigsResp) String() string {
 func (*AddConfigsResp) ProtoMessage() {}
 
 func (x *AddConfigsResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[5]
+	mi := &file_configcenter_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -373,7 +453,7 @@ func (x *AddConfigsResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddConfigsResp.ProtoReflect.Descriptor instead.
 func (*AddConfigsResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{5}
+	return file_configcenter_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *AddConfigsResp) GetConfigIds() []string {
@@ -396,7 +476,7 @@ type UpdateConfigsReq struct {
 
 func (x *UpdateConfigsReq) Reset() {
 	*x = UpdateConfigsReq{}
-	mi := &file_configcenter_proto_msgTypes[6]
+	mi := &file_configcenter_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -408,7 +488,7 @@ func (x *UpdateConfigsReq) String() string {
 func (*UpdateConfigsReq) ProtoMessage() {}
 
 func (x *UpdateConfigsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[6]
+	mi := &file_configcenter_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -421,7 +501,7 @@ func (x *UpdateConfigsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateConfigsReq.ProtoReflect.Descriptor instead.
 func (*UpdateConfigsReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{6}
+	return file_configcenter_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateConfigsReq) GetCollName() string {
@@ -467,7 +547,7 @@ type UpdateConfigsResp struct {
 
 func (x *UpdateConfigsResp) Reset() {
 	*x = UpdateConfigsResp{}
-	mi := &file_configcenter_proto_msgTypes[7]
+	mi := &file_configcenter_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -479,7 +559,7 @@ func (x *UpdateConfigsResp) String() string {
 func (*UpdateConfigsResp) ProtoMessage() {}
 
 func (x *UpdateConfigsResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[7]
+	mi := &file_configcenter_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -492,7 +572,7 @@ func (x *UpdateConfigsResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateConfigsResp.ProtoReflect.Descriptor instead.
 func (*UpdateConfigsResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{7}
+	return file_configcenter_proto_rawDescGZIP(), []int{9}
 }
 
 type AddConfigReq struct {
@@ -507,7 +587,7 @@ type AddConfigReq struct {
 
 func (x *AddConfigReq) Reset() {
 	*x = AddConfigReq{}
-	mi := &file_configcenter_proto_msgTypes[8]
+	mi := &file_configcenter_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -519,7 +599,7 @@ func (x *AddConfigReq) String() string {
 func (*AddConfigReq) ProtoMessage() {}
 
 func (x *AddConfigReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[8]
+	mi := &file_configcenter_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -532,7 +612,7 @@ func (x *AddConfigReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddConfigReq.ProtoReflect.Descriptor instead.
 func (*AddConfigReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{8}
+	return file_configcenter_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *AddConfigReq) GetCollName() string {
@@ -572,7 +652,7 @@ type AddConfigResp struct {
 
 func (x *AddConfigResp) Reset() {
 	*x = AddConfigResp{}
-	mi := &file_configcenter_proto_msgTypes[9]
+	mi := &file_configcenter_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -584,7 +664,7 @@ func (x *AddConfigResp) String() string {
 func (*AddConfigResp) ProtoMessage() {}
 
 func (x *AddConfigResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[9]
+	mi := &file_configcenter_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -597,7 +677,7 @@ func (x *AddConfigResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddConfigResp.ProtoReflect.Descriptor instead.
 func (*AddConfigResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{9}
+	return file_configcenter_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AddConfigResp) GetConfigId() string {
@@ -620,7 +700,7 @@ type UpdateConfigReq struct {
 
 func (x *UpdateConfigReq) Reset() {
 	*x = UpdateConfigReq{}
-	mi := &file_configcenter_proto_msgTypes[10]
+	mi := &file_configcenter_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -632,7 +712,7 @@ func (x *UpdateConfigReq) String() string {
 func (*UpdateConfigReq) ProtoMessage() {}
 
 func (x *UpdateConfigReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[10]
+	mi := &file_configcenter_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -645,7 +725,7 @@ func (x *UpdateConfigReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateConfigReq.ProtoReflect.Descriptor instead.
 func (*UpdateConfigReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{10}
+	return file_configcenter_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *UpdateConfigReq) GetCollName() string {
@@ -691,7 +771,7 @@ type UpdateConfigResp struct {
 
 func (x *UpdateConfigResp) Reset() {
 	*x = UpdateConfigResp{}
-	mi := &file_configcenter_proto_msgTypes[11]
+	mi := &file_configcenter_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -703,7 +783,7 @@ func (x *UpdateConfigResp) String() string {
 func (*UpdateConfigResp) ProtoMessage() {}
 
 func (x *UpdateConfigResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[11]
+	mi := &file_configcenter_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -716,7 +796,7 @@ func (x *UpdateConfigResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateConfigResp.ProtoReflect.Descriptor instead.
 func (*UpdateConfigResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{11}
+	return file_configcenter_proto_rawDescGZIP(), []int{13}
 }
 
 type DeleteConfigReq struct {
@@ -731,7 +811,7 @@ type DeleteConfigReq struct {
 
 func (x *DeleteConfigReq) Reset() {
 	*x = DeleteConfigReq{}
-	mi := &file_configcenter_proto_msgTypes[12]
+	mi := &file_configcenter_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -743,7 +823,7 @@ func (x *DeleteConfigReq) String() string {
 func (*DeleteConfigReq) ProtoMessage() {}
 
 func (x *DeleteConfigReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[12]
+	mi := &file_configcenter_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -756,7 +836,7 @@ func (x *DeleteConfigReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteConfigReq.ProtoReflect.Descriptor instead.
 func (*DeleteConfigReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{12}
+	return file_configcenter_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *DeleteConfigReq) GetCollName() string {
@@ -795,7 +875,7 @@ type DeleteConfigResp struct {
 
 func (x *DeleteConfigResp) Reset() {
 	*x = DeleteConfigResp{}
-	mi := &file_configcenter_proto_msgTypes[13]
+	mi := &file_configcenter_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -807,7 +887,7 @@ func (x *DeleteConfigResp) String() string {
 func (*DeleteConfigResp) ProtoMessage() {}
 
 func (x *DeleteConfigResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[13]
+	mi := &file_configcenter_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -820,7 +900,7 @@ func (x *DeleteConfigResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteConfigResp.ProtoReflect.Descriptor instead.
 func (*DeleteConfigResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{13}
+	return file_configcenter_proto_rawDescGZIP(), []int{15}
 }
 
 type DeleteConfigsReq struct {
@@ -835,7 +915,7 @@ type DeleteConfigsReq struct {
 
 func (x *DeleteConfigsReq) Reset() {
 	*x = DeleteConfigsReq{}
-	mi := &file_configcenter_proto_msgTypes[14]
+	mi := &file_configcenter_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -847,7 +927,7 @@ func (x *DeleteConfigsReq) String() string {
 func (*DeleteConfigsReq) ProtoMessage() {}
 
 func (x *DeleteConfigsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[14]
+	mi := &file_configcenter_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -860,7 +940,7 @@ func (x *DeleteConfigsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteConfigsReq.ProtoReflect.Descriptor instead.
 func (*DeleteConfigsReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{14}
+	return file_configcenter_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *DeleteConfigsReq) GetCollName() string {
@@ -899,7 +979,7 @@ type DeleteConfigsResp struct {
 
 func (x *DeleteConfigsResp) Reset() {
 	*x = DeleteConfigsResp{}
-	mi := &file_configcenter_proto_msgTypes[15]
+	mi := &file_configcenter_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -911,7 +991,7 @@ func (x *DeleteConfigsResp) String() string {
 func (*DeleteConfigsResp) ProtoMessage() {}
 
 func (x *DeleteConfigsResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[15]
+	mi := &file_configcenter_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -924,7 +1004,7 @@ func (x *DeleteConfigsResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteConfigsResp.ProtoReflect.Descriptor instead.
 func (*DeleteConfigsResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{15}
+	return file_configcenter_proto_rawDescGZIP(), []int{17}
 }
 
 type ListConfigReq struct {
@@ -941,7 +1021,7 @@ type ListConfigReq struct {
 
 func (x *ListConfigReq) Reset() {
 	*x = ListConfigReq{}
-	mi := &file_configcenter_proto_msgTypes[16]
+	mi := &file_configcenter_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -953,7 +1033,7 @@ func (x *ListConfigReq) String() string {
 func (*ListConfigReq) ProtoMessage() {}
 
 func (x *ListConfigReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[16]
+	mi := &file_configcenter_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -966,7 +1046,7 @@ func (x *ListConfigReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListConfigReq.ProtoReflect.Descriptor instead.
 func (*ListConfigReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{16}
+	return file_configcenter_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ListConfigReq) GetCollName() string {
@@ -1021,7 +1101,7 @@ type ListConfigResp struct {
 
 func (x *ListConfigResp) Reset() {
 	*x = ListConfigResp{}
-	mi := &file_configcenter_proto_msgTypes[17]
+	mi := &file_configcenter_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1033,7 +1113,7 @@ func (x *ListConfigResp) String() string {
 func (*ListConfigResp) ProtoMessage() {}
 
 func (x *ListConfigResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[17]
+	mi := &file_configcenter_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1046,7 +1126,7 @@ func (x *ListConfigResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListConfigResp.ProtoReflect.Descriptor instead.
 func (*ListConfigResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{17}
+	return file_configcenter_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ListConfigResp) GetList() [][]byte {
@@ -1074,7 +1154,7 @@ type NotifyListenersReloadConfigReq struct {
 
 func (x *NotifyListenersReloadConfigReq) Reset() {
 	*x = NotifyListenersReloadConfigReq{}
-	mi := &file_configcenter_proto_msgTypes[18]
+	mi := &file_configcenter_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1086,7 +1166,7 @@ func (x *NotifyListenersReloadConfigReq) String() string {
 func (*NotifyListenersReloadConfigReq) ProtoMessage() {}
 
 func (x *NotifyListenersReloadConfigReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[18]
+	mi := &file_configcenter_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1099,7 +1179,7 @@ func (x *NotifyListenersReloadConfigReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotifyListenersReloadConfigReq.ProtoReflect.Descriptor instead.
 func (*NotifyListenersReloadConfigReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{18}
+	return file_configcenter_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *NotifyListenersReloadConfigReq) GetListenerGroup() string {
@@ -1131,7 +1211,7 @@ type NotifyListenersReloadConfigResp struct {
 
 func (x *NotifyListenersReloadConfigResp) Reset() {
 	*x = NotifyListenersReloadConfigResp{}
-	mi := &file_configcenter_proto_msgTypes[19]
+	mi := &file_configcenter_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1143,7 +1223,7 @@ func (x *NotifyListenersReloadConfigResp) String() string {
 func (*NotifyListenersReloadConfigResp) ProtoMessage() {}
 
 func (x *NotifyListenersReloadConfigResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[19]
+	mi := &file_configcenter_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1156,7 +1236,7 @@ func (x *NotifyListenersReloadConfigResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotifyListenersReloadConfigResp.ProtoReflect.Descriptor instead.
 func (*NotifyListenersReloadConfigResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{19}
+	return file_configcenter_proto_rawDescGZIP(), []int{21}
 }
 
 type SetConfigSchemaReq struct {
@@ -1169,7 +1249,7 @@ type SetConfigSchemaReq struct {
 
 func (x *SetConfigSchemaReq) Reset() {
 	*x = SetConfigSchemaReq{}
-	mi := &file_configcenter_proto_msgTypes[20]
+	mi := &file_configcenter_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1181,7 +1261,7 @@ func (x *SetConfigSchemaReq) String() string {
 func (*SetConfigSchemaReq) ProtoMessage() {}
 
 func (x *SetConfigSchemaReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[20]
+	mi := &file_configcenter_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1194,7 +1274,7 @@ func (x *SetConfigSchemaReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetConfigSchemaReq.ProtoReflect.Descriptor instead.
 func (*SetConfigSchemaReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{20}
+	return file_configcenter_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *SetConfigSchemaReq) GetSchema() *ConfigSchema {
@@ -1218,13 +1298,14 @@ type ConfigSchema struct {
 	IndexKeys     []string               `protobuf:"bytes,2,rep,name=index_keys,json=indexKeys,proto3" json:"index_keys,omitempty"`               // 普通索引键
 	UniqIndexKeys []string               `protobuf:"bytes,3,rep,name=uniq_index_keys,json=uniqIndexKeys,proto3" json:"uniq_index_keys,omitempty"` // 唯一索引键
 	JsonSchema    string                 `protobuf:"bytes,4,opt,name=json_schema,json=jsonSchema,proto3" json:"json_schema,omitempty"`            // json schema
+	Desc          string                 `protobuf:"bytes,5,opt,name=desc,proto3" json:"desc,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ConfigSchema) Reset() {
 	*x = ConfigSchema{}
-	mi := &file_configcenter_proto_msgTypes[21]
+	mi := &file_configcenter_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1236,7 +1317,7 @@ func (x *ConfigSchema) String() string {
 func (*ConfigSchema) ProtoMessage() {}
 
 func (x *ConfigSchema) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[21]
+	mi := &file_configcenter_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1249,7 +1330,7 @@ func (x *ConfigSchema) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigSchema.ProtoReflect.Descriptor instead.
 func (*ConfigSchema) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{21}
+	return file_configcenter_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ConfigSchema) GetCollName() string {
@@ -1280,6 +1361,13 @@ func (x *ConfigSchema) GetJsonSchema() string {
 	return ""
 }
 
+func (x *ConfigSchema) GetDesc() string {
+	if x != nil {
+		return x.Desc
+	}
+	return ""
+}
+
 type SetConfigSchemaResp struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1288,7 +1376,7 @@ type SetConfigSchemaResp struct {
 
 func (x *SetConfigSchemaResp) Reset() {
 	*x = SetConfigSchemaResp{}
-	mi := &file_configcenter_proto_msgTypes[22]
+	mi := &file_configcenter_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1300,7 +1388,7 @@ func (x *SetConfigSchemaResp) String() string {
 func (*SetConfigSchemaResp) ProtoMessage() {}
 
 func (x *SetConfigSchemaResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[22]
+	mi := &file_configcenter_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1313,7 +1401,7 @@ func (x *SetConfigSchemaResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetConfigSchemaResp.ProtoReflect.Descriptor instead.
 func (*SetConfigSchemaResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{22}
+	return file_configcenter_proto_rawDescGZIP(), []int{24}
 }
 
 type GetConfigSchemaReq struct {
@@ -1325,7 +1413,7 @@ type GetConfigSchemaReq struct {
 
 func (x *GetConfigSchemaReq) Reset() {
 	*x = GetConfigSchemaReq{}
-	mi := &file_configcenter_proto_msgTypes[23]
+	mi := &file_configcenter_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1337,7 +1425,7 @@ func (x *GetConfigSchemaReq) String() string {
 func (*GetConfigSchemaReq) ProtoMessage() {}
 
 func (x *GetConfigSchemaReq) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[23]
+	mi := &file_configcenter_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1350,7 +1438,7 @@ func (x *GetConfigSchemaReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetConfigSchemaReq.ProtoReflect.Descriptor instead.
 func (*GetConfigSchemaReq) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{23}
+	return file_configcenter_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GetConfigSchemaReq) GetCollName() string {
@@ -1369,7 +1457,7 @@ type GetConfigSchemaResp struct {
 
 func (x *GetConfigSchemaResp) Reset() {
 	*x = GetConfigSchemaResp{}
-	mi := &file_configcenter_proto_msgTypes[24]
+	mi := &file_configcenter_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1381,7 +1469,7 @@ func (x *GetConfigSchemaResp) String() string {
 func (*GetConfigSchemaResp) ProtoMessage() {}
 
 func (x *GetConfigSchemaResp) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[24]
+	mi := &file_configcenter_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1394,7 +1482,7 @@ func (x *GetConfigSchemaResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetConfigSchemaResp.ProtoReflect.Descriptor instead.
 func (*GetConfigSchemaResp) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{24}
+	return file_configcenter_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *GetConfigSchemaResp) GetSchema() *ConfigSchema {
@@ -1414,7 +1502,7 @@ type ListConfigReq_Sort struct {
 
 func (x *ListConfigReq_Sort) Reset() {
 	*x = ListConfigReq_Sort{}
-	mi := &file_configcenter_proto_msgTypes[25]
+	mi := &file_configcenter_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1426,7 +1514,7 @@ func (x *ListConfigReq_Sort) String() string {
 func (*ListConfigReq_Sort) ProtoMessage() {}
 
 func (x *ListConfigReq_Sort) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[25]
+	mi := &file_configcenter_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1439,7 +1527,7 @@ func (x *ListConfigReq_Sort) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListConfigReq_Sort.ProtoReflect.Descriptor instead.
 func (*ListConfigReq_Sort) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{16, 0}
+	return file_configcenter_proto_rawDescGZIP(), []int{18, 0}
 }
 
 func (x *ListConfigReq_Sort) GetField() string {
@@ -1466,7 +1554,7 @@ type ListConfigReq_Selector struct {
 
 func (x *ListConfigReq_Selector) Reset() {
 	*x = ListConfigReq_Selector{}
-	mi := &file_configcenter_proto_msgTypes[26]
+	mi := &file_configcenter_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1478,7 +1566,7 @@ func (x *ListConfigReq_Selector) String() string {
 func (*ListConfigReq_Selector) ProtoMessage() {}
 
 func (x *ListConfigReq_Selector) ProtoReflect() protoreflect.Message {
-	mi := &file_configcenter_proto_msgTypes[26]
+	mi := &file_configcenter_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1491,7 +1579,7 @@ func (x *ListConfigReq_Selector) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListConfigReq_Selector.ProtoReflect.Descriptor instead.
 func (*ListConfigReq_Selector) Descriptor() ([]byte, []int) {
-	return file_configcenter_proto_rawDescGZIP(), []int{16, 1}
+	return file_configcenter_proto_rawDescGZIP(), []int{18, 1}
 }
 
 func (x *ListConfigReq_Selector) GetField() string {
@@ -1512,7 +1600,10 @@ var File_configcenter_proto protoreflect.FileDescriptor
 
 const file_configcenter_proto_rawDesc = "" +
 	"\n" +
-	"\x12configcenter.proto\x12\fconfigcenter\x1a\x13easymicro_ext.proto\x1a\x0fmgorm_ext.proto\x1a\fcommon.proto\"\x99\x01\n" +
+	"\x12configcenter.proto\x12\fconfigcenter\x1a\x13easymicro_ext.proto\x1a\x0fmgorm_ext.proto\x1a\fcommon.proto\"\x15\n" +
+	"\x13ListConfigSchemaReq\"F\n" +
+	"\x14ListConfigSchemaResp\x12.\n" +
+	"\x04list\x18\x01 \x03(\v2\x1a.configcenter.ConfigSchemaR\x04list\"\x99\x01\n" +
 	"\x0eSetKeyValueReq\x12(\n" +
 	"\x06config\x18\x01 \x01(\v2\x10.common.KVConfigR\x06config\x126\n" +
 	"\x17should_notify_listeners\x18\x02 \x01(\bR\x15shouldNotifyListeners\x12%\n" +
@@ -1588,15 +1679,16 @@ const file_configcenter_proto_rawDesc = "" +
 	"\x1fNotifyListenersReloadConfigResp\"z\n" +
 	"\x12SetConfigSchemaReq\x122\n" +
 	"\x06schema\x18\x01 \x01(\v2\x1a.configcenter.ConfigSchemaR\x06schema\x120\n" +
-	"\x14async_create_indexes\x18\x02 \x01(\bR\x12asyncCreateIndexes\"\xdd\x01\n" +
+	"\x14async_create_indexes\x18\x02 \x01(\bR\x12asyncCreateIndexes\"\x80\x02\n" +
 	"\fConfigSchema\x12\x1b\n" +
 	"\tcoll_name\x18\x01 \x01(\tR\bcollName\x12\x1d\n" +
 	"\n" +
 	"index_keys\x18\x02 \x03(\tR\tindexKeys\x12&\n" +
 	"\x0funiq_index_keys\x18\x03 \x03(\tR\runiqIndexKeys\x12\x1f\n" +
 	"\vjson_schema\x18\x04 \x01(\tR\n" +
-	"jsonSchema:H\x8a\x9d \x06\"\x04bson\x8a\x8e%:\n" +
-	"\rmconfigcenter\x12\rmconfigcenter\x1a\rconfig_schema:\tcoll_nameP\x01\"\x15\n" +
+	"jsonSchema\x12\x12\n" +
+	"\x04desc\x18\x05 \x01(\tR\x04desc:W\x8a\x9d \x06\"\x04bson\x8a\x8e%I\n" +
+	"\rmconfigcenter\x12\rmconfigcenter\x1a\rconfig_schema:\tcoll_nameP\x01\x9a\x01\f配置协议\"\x15\n" +
 	"\x13SetConfigSchemaResp\"1\n" +
 	"\x12GetConfigSchemaReq\x12\x1b\n" +
 	"\tcoll_name\x18\x01 \x01(\tR\bcollName\"I\n" +
@@ -1608,7 +1700,7 @@ const file_configcenter_proto_rawDesc = "" +
 	"\x13ErrCodeParamInvalid\x10\xe9\a\x12 \n" +
 	"\x1bErrCodeConfigSchemaNotFound\x10\xea\a\x12 \n" +
 	"\x1bErrCodeValidateSchemaFailed\x10\xeb\a\x12\x1a\n" +
-	"\x15ErrCodeConfigNotFound\x10\xec\a2\xec\a\n" +
+	"\x15ErrCodeConfigNotFound\x10\xec\a2\xc7\b\n" +
 	"\fConfigCenter\x12D\n" +
 	"\tAddConfig\x12\x1a.configcenter.AddConfigReq\x1a\x1b.configcenter.AddConfigResp\x12G\n" +
 	"\n" +
@@ -1623,7 +1715,8 @@ const file_configcenter_proto_rawDesc = "" +
 	"\x0fSetConfigSchema\x12 .configcenter.SetConfigSchemaReq\x1a!.configcenter.SetConfigSchemaResp\x12V\n" +
 	"\x0fGetConfigSchema\x12 .configcenter.GetConfigSchemaReq\x1a!.configcenter.GetConfigSchemaResp\x12J\n" +
 	"\vSetKeyValue\x12\x1c.configcenter.SetKeyValueReq\x1a\x1d.configcenter.SetKeyValueResp\x12J\n" +
-	"\vGetKeyValue\x12\x1c.configcenter.GetKeyValueReq\x1a\x1d.configcenter.GetKeyValueRespBW\x8a\x9d \" \x01@\x01Z\rmconfigcenterb\rmconfigcenterZ/github.com/995933447/mconfigcenter/configcenterb\x06proto3"
+	"\vGetKeyValue\x12\x1c.configcenter.GetKeyValueReq\x1a\x1d.configcenter.GetKeyValueResp\x12Y\n" +
+	"\x10ListConfigSchema\x12!.configcenter.ListConfigSchemaReq\x1a\".configcenter.ListConfigSchemaRespBW\x8a\x9d \" \x01@\x01Z\rmconfigcenterb\rmconfigcenterZ/github.com/995933447/mconfigcenter/configcenterb\x06proto3"
 
 var (
 	file_configcenter_proto_rawDescOnce sync.Once
@@ -1638,74 +1731,79 @@ func file_configcenter_proto_rawDescGZIP() []byte {
 }
 
 var file_configcenter_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_configcenter_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_configcenter_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_configcenter_proto_goTypes = []any{
 	(ErrCode)(0),                            // 0: configcenter.ErrCode
-	(*SetKeyValueReq)(nil),                  // 1: configcenter.SetKeyValueReq
-	(*SetKeyValueResp)(nil),                 // 2: configcenter.SetKeyValueResp
-	(*GetKeyValueReq)(nil),                  // 3: configcenter.GetKeyValueReq
-	(*GetKeyValueResp)(nil),                 // 4: configcenter.GetKeyValueResp
-	(*AddConfigsReq)(nil),                   // 5: configcenter.AddConfigsReq
-	(*AddConfigsResp)(nil),                  // 6: configcenter.AddConfigsResp
-	(*UpdateConfigsReq)(nil),                // 7: configcenter.UpdateConfigsReq
-	(*UpdateConfigsResp)(nil),               // 8: configcenter.UpdateConfigsResp
-	(*AddConfigReq)(nil),                    // 9: configcenter.AddConfigReq
-	(*AddConfigResp)(nil),                   // 10: configcenter.AddConfigResp
-	(*UpdateConfigReq)(nil),                 // 11: configcenter.UpdateConfigReq
-	(*UpdateConfigResp)(nil),                // 12: configcenter.UpdateConfigResp
-	(*DeleteConfigReq)(nil),                 // 13: configcenter.DeleteConfigReq
-	(*DeleteConfigResp)(nil),                // 14: configcenter.DeleteConfigResp
-	(*DeleteConfigsReq)(nil),                // 15: configcenter.DeleteConfigsReq
-	(*DeleteConfigsResp)(nil),               // 16: configcenter.DeleteConfigsResp
-	(*ListConfigReq)(nil),                   // 17: configcenter.ListConfigReq
-	(*ListConfigResp)(nil),                  // 18: configcenter.ListConfigResp
-	(*NotifyListenersReloadConfigReq)(nil),  // 19: configcenter.NotifyListenersReloadConfigReq
-	(*NotifyListenersReloadConfigResp)(nil), // 20: configcenter.NotifyListenersReloadConfigResp
-	(*SetConfigSchemaReq)(nil),              // 21: configcenter.SetConfigSchemaReq
-	(*ConfigSchema)(nil),                    // 22: configcenter.ConfigSchema
-	(*SetConfigSchemaResp)(nil),             // 23: configcenter.SetConfigSchemaResp
-	(*GetConfigSchemaReq)(nil),              // 24: configcenter.GetConfigSchemaReq
-	(*GetConfigSchemaResp)(nil),             // 25: configcenter.GetConfigSchemaResp
-	(*ListConfigReq_Sort)(nil),              // 26: configcenter.ListConfigReq.Sort
-	(*ListConfigReq_Selector)(nil),          // 27: configcenter.ListConfigReq.Selector
-	(*common.KVConfig)(nil),                 // 28: common.KVConfig
+	(*ListConfigSchemaReq)(nil),             // 1: configcenter.ListConfigSchemaReq
+	(*ListConfigSchemaResp)(nil),            // 2: configcenter.ListConfigSchemaResp
+	(*SetKeyValueReq)(nil),                  // 3: configcenter.SetKeyValueReq
+	(*SetKeyValueResp)(nil),                 // 4: configcenter.SetKeyValueResp
+	(*GetKeyValueReq)(nil),                  // 5: configcenter.GetKeyValueReq
+	(*GetKeyValueResp)(nil),                 // 6: configcenter.GetKeyValueResp
+	(*AddConfigsReq)(nil),                   // 7: configcenter.AddConfigsReq
+	(*AddConfigsResp)(nil),                  // 8: configcenter.AddConfigsResp
+	(*UpdateConfigsReq)(nil),                // 9: configcenter.UpdateConfigsReq
+	(*UpdateConfigsResp)(nil),               // 10: configcenter.UpdateConfigsResp
+	(*AddConfigReq)(nil),                    // 11: configcenter.AddConfigReq
+	(*AddConfigResp)(nil),                   // 12: configcenter.AddConfigResp
+	(*UpdateConfigReq)(nil),                 // 13: configcenter.UpdateConfigReq
+	(*UpdateConfigResp)(nil),                // 14: configcenter.UpdateConfigResp
+	(*DeleteConfigReq)(nil),                 // 15: configcenter.DeleteConfigReq
+	(*DeleteConfigResp)(nil),                // 16: configcenter.DeleteConfigResp
+	(*DeleteConfigsReq)(nil),                // 17: configcenter.DeleteConfigsReq
+	(*DeleteConfigsResp)(nil),               // 18: configcenter.DeleteConfigsResp
+	(*ListConfigReq)(nil),                   // 19: configcenter.ListConfigReq
+	(*ListConfigResp)(nil),                  // 20: configcenter.ListConfigResp
+	(*NotifyListenersReloadConfigReq)(nil),  // 21: configcenter.NotifyListenersReloadConfigReq
+	(*NotifyListenersReloadConfigResp)(nil), // 22: configcenter.NotifyListenersReloadConfigResp
+	(*SetConfigSchemaReq)(nil),              // 23: configcenter.SetConfigSchemaReq
+	(*ConfigSchema)(nil),                    // 24: configcenter.ConfigSchema
+	(*SetConfigSchemaResp)(nil),             // 25: configcenter.SetConfigSchemaResp
+	(*GetConfigSchemaReq)(nil),              // 26: configcenter.GetConfigSchemaReq
+	(*GetConfigSchemaResp)(nil),             // 27: configcenter.GetConfigSchemaResp
+	(*ListConfigReq_Sort)(nil),              // 28: configcenter.ListConfigReq.Sort
+	(*ListConfigReq_Selector)(nil),          // 29: configcenter.ListConfigReq.Selector
+	(*common.KVConfig)(nil),                 // 30: common.KVConfig
 }
 var file_configcenter_proto_depIdxs = []int32{
-	28, // 0: configcenter.SetKeyValueReq.config:type_name -> common.KVConfig
-	28, // 1: configcenter.GetKeyValueResp.config:type_name -> common.KVConfig
-	26, // 2: configcenter.ListConfigReq.sorts:type_name -> configcenter.ListConfigReq.Sort
-	27, // 3: configcenter.ListConfigReq.selectors:type_name -> configcenter.ListConfigReq.Selector
-	22, // 4: configcenter.SetConfigSchemaReq.schema:type_name -> configcenter.ConfigSchema
-	22, // 5: configcenter.GetConfigSchemaResp.schema:type_name -> configcenter.ConfigSchema
-	9,  // 6: configcenter.ConfigCenter.AddConfig:input_type -> configcenter.AddConfigReq
-	5,  // 7: configcenter.ConfigCenter.AddConfigs:input_type -> configcenter.AddConfigsReq
-	11, // 8: configcenter.ConfigCenter.UpdateConfig:input_type -> configcenter.UpdateConfigReq
-	7,  // 9: configcenter.ConfigCenter.UpdateConfigs:input_type -> configcenter.UpdateConfigsReq
-	13, // 10: configcenter.ConfigCenter.DeleteConfig:input_type -> configcenter.DeleteConfigReq
-	15, // 11: configcenter.ConfigCenter.DeleteConfigs:input_type -> configcenter.DeleteConfigsReq
-	17, // 12: configcenter.ConfigCenter.ListConfig:input_type -> configcenter.ListConfigReq
-	19, // 13: configcenter.ConfigCenter.NotifyListenersReloadConfig:input_type -> configcenter.NotifyListenersReloadConfigReq
-	21, // 14: configcenter.ConfigCenter.SetConfigSchema:input_type -> configcenter.SetConfigSchemaReq
-	24, // 15: configcenter.ConfigCenter.GetConfigSchema:input_type -> configcenter.GetConfigSchemaReq
-	1,  // 16: configcenter.ConfigCenter.SetKeyValue:input_type -> configcenter.SetKeyValueReq
-	3,  // 17: configcenter.ConfigCenter.GetKeyValue:input_type -> configcenter.GetKeyValueReq
-	10, // 18: configcenter.ConfigCenter.AddConfig:output_type -> configcenter.AddConfigResp
-	6,  // 19: configcenter.ConfigCenter.AddConfigs:output_type -> configcenter.AddConfigsResp
-	12, // 20: configcenter.ConfigCenter.UpdateConfig:output_type -> configcenter.UpdateConfigResp
-	8,  // 21: configcenter.ConfigCenter.UpdateConfigs:output_type -> configcenter.UpdateConfigsResp
-	14, // 22: configcenter.ConfigCenter.DeleteConfig:output_type -> configcenter.DeleteConfigResp
-	16, // 23: configcenter.ConfigCenter.DeleteConfigs:output_type -> configcenter.DeleteConfigsResp
-	18, // 24: configcenter.ConfigCenter.ListConfig:output_type -> configcenter.ListConfigResp
-	20, // 25: configcenter.ConfigCenter.NotifyListenersReloadConfig:output_type -> configcenter.NotifyListenersReloadConfigResp
-	23, // 26: configcenter.ConfigCenter.SetConfigSchema:output_type -> configcenter.SetConfigSchemaResp
-	25, // 27: configcenter.ConfigCenter.GetConfigSchema:output_type -> configcenter.GetConfigSchemaResp
-	2,  // 28: configcenter.ConfigCenter.SetKeyValue:output_type -> configcenter.SetKeyValueResp
-	4,  // 29: configcenter.ConfigCenter.GetKeyValue:output_type -> configcenter.GetKeyValueResp
-	18, // [18:30] is the sub-list for method output_type
-	6,  // [6:18] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	24, // 0: configcenter.ListConfigSchemaResp.list:type_name -> configcenter.ConfigSchema
+	30, // 1: configcenter.SetKeyValueReq.config:type_name -> common.KVConfig
+	30, // 2: configcenter.GetKeyValueResp.config:type_name -> common.KVConfig
+	28, // 3: configcenter.ListConfigReq.sorts:type_name -> configcenter.ListConfigReq.Sort
+	29, // 4: configcenter.ListConfigReq.selectors:type_name -> configcenter.ListConfigReq.Selector
+	24, // 5: configcenter.SetConfigSchemaReq.schema:type_name -> configcenter.ConfigSchema
+	24, // 6: configcenter.GetConfigSchemaResp.schema:type_name -> configcenter.ConfigSchema
+	11, // 7: configcenter.ConfigCenter.AddConfig:input_type -> configcenter.AddConfigReq
+	7,  // 8: configcenter.ConfigCenter.AddConfigs:input_type -> configcenter.AddConfigsReq
+	13, // 9: configcenter.ConfigCenter.UpdateConfig:input_type -> configcenter.UpdateConfigReq
+	9,  // 10: configcenter.ConfigCenter.UpdateConfigs:input_type -> configcenter.UpdateConfigsReq
+	15, // 11: configcenter.ConfigCenter.DeleteConfig:input_type -> configcenter.DeleteConfigReq
+	17, // 12: configcenter.ConfigCenter.DeleteConfigs:input_type -> configcenter.DeleteConfigsReq
+	19, // 13: configcenter.ConfigCenter.ListConfig:input_type -> configcenter.ListConfigReq
+	21, // 14: configcenter.ConfigCenter.NotifyListenersReloadConfig:input_type -> configcenter.NotifyListenersReloadConfigReq
+	23, // 15: configcenter.ConfigCenter.SetConfigSchema:input_type -> configcenter.SetConfigSchemaReq
+	26, // 16: configcenter.ConfigCenter.GetConfigSchema:input_type -> configcenter.GetConfigSchemaReq
+	3,  // 17: configcenter.ConfigCenter.SetKeyValue:input_type -> configcenter.SetKeyValueReq
+	5,  // 18: configcenter.ConfigCenter.GetKeyValue:input_type -> configcenter.GetKeyValueReq
+	1,  // 19: configcenter.ConfigCenter.ListConfigSchema:input_type -> configcenter.ListConfigSchemaReq
+	12, // 20: configcenter.ConfigCenter.AddConfig:output_type -> configcenter.AddConfigResp
+	8,  // 21: configcenter.ConfigCenter.AddConfigs:output_type -> configcenter.AddConfigsResp
+	14, // 22: configcenter.ConfigCenter.UpdateConfig:output_type -> configcenter.UpdateConfigResp
+	10, // 23: configcenter.ConfigCenter.UpdateConfigs:output_type -> configcenter.UpdateConfigsResp
+	16, // 24: configcenter.ConfigCenter.DeleteConfig:output_type -> configcenter.DeleteConfigResp
+	18, // 25: configcenter.ConfigCenter.DeleteConfigs:output_type -> configcenter.DeleteConfigsResp
+	20, // 26: configcenter.ConfigCenter.ListConfig:output_type -> configcenter.ListConfigResp
+	22, // 27: configcenter.ConfigCenter.NotifyListenersReloadConfig:output_type -> configcenter.NotifyListenersReloadConfigResp
+	25, // 28: configcenter.ConfigCenter.SetConfigSchema:output_type -> configcenter.SetConfigSchemaResp
+	27, // 29: configcenter.ConfigCenter.GetConfigSchema:output_type -> configcenter.GetConfigSchemaResp
+	4,  // 30: configcenter.ConfigCenter.SetKeyValue:output_type -> configcenter.SetKeyValueResp
+	6,  // 31: configcenter.ConfigCenter.GetKeyValue:output_type -> configcenter.GetKeyValueResp
+	2,  // 32: configcenter.ConfigCenter.ListConfigSchema:output_type -> configcenter.ListConfigSchemaResp
+	20, // [20:33] is the sub-list for method output_type
+	7,  // [7:20] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_configcenter_proto_init() }
@@ -1719,7 +1817,7 @@ func file_configcenter_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_configcenter_proto_rawDesc), len(file_configcenter_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   27,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

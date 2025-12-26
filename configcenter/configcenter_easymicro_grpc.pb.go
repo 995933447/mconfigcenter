@@ -160,3 +160,11 @@ func (s *ConfigCenter) GetKeyValue(ctx context.Context, in *GetKeyValueReq, opts
 
 	return s.c.GetKeyValue(ctx, in, opts...)
 }
+
+func (s *ConfigCenter) ListConfigSchema(ctx context.Context, in *ListConfigSchemaReq, opts ...grpc.CallOption) (*ListConfigSchemaResp, error) {
+	if err := s.prepareConn(); err != nil {
+		return nil, err
+	}
+
+	return s.c.ListConfigSchema(ctx, in, opts...)
+}

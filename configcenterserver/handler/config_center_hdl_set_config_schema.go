@@ -28,6 +28,7 @@ func (s *ConfigCenter) SetConfigSchema(ctx context.Context, req *configcenter.Se
 	schema.CollName = req.Schema.CollName
 	schema.IndexKeys = req.Schema.IndexKeys
 	schema.UniqIndexKeys = req.Schema.UniqIndexKeys
+	schema.Desc = req.Schema.Desc
 
 	update, err := mgorm.ToBsonM(schema)
 	if err != nil {

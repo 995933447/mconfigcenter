@@ -59,6 +59,17 @@ service ConfigCenter {
 
   // 获取键值配置
   rpc GetKeyValue(GetKeyValueReq) returns (GetKeyValueResp);
+
+  // 获取配置协议列表
+  rpc ListConfigSchema(ListConfigSchemaReq) returns (ListConfigSchemaResp);
+}
+
+message ListConfigSchemaReq {
+
+}
+
+message ListConfigSchemaResp {
+  repeated ConfigSchema list = 1;
 }
 
 message SetKeyValueReq {
@@ -195,11 +206,13 @@ message ConfigSchema {
     tb:"config_schema"
     disabled_auto_expire_at:true
     uniq_index_keys:["coll_name"]
+    desc: "配置协议"
   };
   string coll_name = 1; // 集合名称
   repeated string index_keys = 2; // 普通索引键
   repeated string uniq_index_keys = 3; // 唯一索引键
   string json_schema = 4; // json schema
+  string desc = 5;
 }
 
 message SetConfigSchemaResp {

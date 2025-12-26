@@ -16,6 +16,7 @@ message KVConfig {
     tb:"kv_config"
     disabled_auto_expire_at:true
     uniq_index_keys: ["key"]
+    desc: "key value配置"
   };
   string key = 1;
   string value = 2;
