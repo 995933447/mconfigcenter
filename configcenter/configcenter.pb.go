@@ -1679,15 +1679,15 @@ const file_configcenter_proto_rawDesc = "" +
 	"\x1fNotifyListenersReloadConfigResp\"z\n" +
 	"\x12SetConfigSchemaReq\x122\n" +
 	"\x06schema\x18\x01 \x01(\v2\x1a.configcenter.ConfigSchemaR\x06schema\x120\n" +
-	"\x14async_create_indexes\x18\x02 \x01(\bR\x12asyncCreateIndexes\"\x80\x02\n" +
-	"\fConfigSchema\x12\x1b\n" +
-	"\tcoll_name\x18\x01 \x01(\tR\bcollName\x12\x1d\n" +
+	"\x14async_create_indexes\x18\x02 \x01(\bR\x12asyncCreateIndexes\"\xfb\x04\n" +
+	"\fConfigSchema\x12d\n" +
+	"\tcoll_name\x18\x01 \x01(\tBG\x8a\x8e%C\"Ajson:\"coll_name\" bson:\"coll_name\" jsonschema:\"title=集合名称\"R\bcollName\x12h\n" +
 	"\n" +
-	"index_keys\x18\x02 \x03(\tR\tindexKeys\x12&\n" +
-	"\x0funiq_index_keys\x18\x03 \x03(\tR\runiqIndexKeys\x12\x1f\n" +
-	"\vjson_schema\x18\x04 \x01(\tR\n" +
-	"jsonSchema\x12\x12\n" +
-	"\x04desc\x18\x05 \x01(\tR\x04desc:W\x8a\x9d \x06\"\x04bson\x8a\x8e%I\n" +
+	"index_keys\x18\x02 \x03(\tBI\x8a\x8e%E\"Cjson:\"index_keys\" bson:\"index_keys\" jsonschema:\"title=集合索引\"R\tindexKeys\x12\x81\x01\n" +
+	"\x0funiq_index_keys\x18\x03 \x03(\tBY\x8a\x8e%U\"Sjson:\"uniq_index_keys\" bson:\"uniq_index_keys\" jsonschema:\"title=集合唯一索引\"R\runiqIndexKeys\x12k\n" +
+	"\vjson_schema\x18\x04 \x01(\tBJ\x8a\x8e%F\"Djson:\"json_schema\" bson:\"json_schema\" jsonschema:\"title=json schema\"R\n" +
+	"jsonSchema\x12Q\n" +
+	"\x04desc\x18\x05 \x01(\tB=\x8a\x8e%9\"7json:\"desc\" bson:\"desc\" jsonschema:\"title=描述信息\"R\x04desc:W\x8a\x9d \x06\"\x04bson\x8a\x8e%I\n" +
 	"\rmconfigcenter\x12\rmconfigcenter\x1a\rconfig_schema:\tcoll_nameP\x01\x9a\x01\f配置协议\"\x15\n" +
 	"\x13SetConfigSchemaResp\"1\n" +
 	"\x12GetConfigSchemaReq\x12\x1b\n" +

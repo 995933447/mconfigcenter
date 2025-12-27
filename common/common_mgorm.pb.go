@@ -30,9 +30,9 @@ var kVConfigExpireIndexKeys = []string{}
 
 type KVConfigOrm struct {
 	ID        primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	Key       string             `json:"key" bson:"key"`
-	Value     string             `json:"value" bson:"value"`
-	Extra     string             `json:"extra" bson:"extra"`
+	Key       string             `json:"key" bson:"key" jsonschema:"title=键"`
+	Value     string             `json:"value" bson:"value" jsonschema:"title=值"`
+	Extra     string             `json:"extra" bson:"extra" jsonschema:"title=额外信息"`
 	CreatedAt time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdatedAt time.Time          `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }

@@ -18,7 +18,7 @@ message KVConfig {
     uniq_index_keys: ["key"]
     desc: "key value配置"
   };
-  string key = 1;
-  string value = 2;
-  string extra = 3;
+  string key = 1 [(mgorm_ext.mgorm_field_opts)= {tags:"json:\"key\" bson:\"key\" jsonschema:\"title=键\""}];
+  string value = 2 [(mgorm_ext.mgorm_field_opts)= {tags:"json:\"value\" bson:\"value\" jsonschema:\"title=值\""}];
+  string extra = 3 [(mgorm_ext.mgorm_field_opts)= {tags:"json:\"extra\" bson:\"extra\" jsonschema:\"title=额外信息\""}];
 }

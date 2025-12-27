@@ -30,11 +30,11 @@ var configSchemaExpireIndexKeys = []string{}
 
 type ConfigSchemaOrm struct {
 	ID            primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	CollName      string             `json:"coll_name" bson:"coll_name"`
-	IndexKeys     []string           `json:"index_keys" bson:"index_keys"`
-	UniqIndexKeys []string           `json:"uniq_index_keys" bson:"uniq_index_keys"`
-	JsonSchema    string             `json:"json_schema" bson:"json_schema"`
-	Desc          string             `json:"desc" bson:"desc"`
+	CollName      string             `json:"coll_name" bson:"coll_name" jsonschema:"title=集合名称"`
+	IndexKeys     []string           `json:"index_keys" bson:"index_keys" jsonschema:"title=集合索引"`
+	UniqIndexKeys []string           `json:"uniq_index_keys" bson:"uniq_index_keys" jsonschema:"title=集合唯一索引"`
+	JsonSchema    string             `json:"json_schema" bson:"json_schema" jsonschema:"title=json schema"`
+	Desc          string             `json:"desc" bson:"desc" jsonschema:"title=描述信息"`
 	CreatedAt     time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdatedAt     time.Time          `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }

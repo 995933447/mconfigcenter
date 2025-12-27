@@ -87,11 +87,11 @@ var File_common_proto protoreflect.FileDescriptor
 
 const file_common_proto_rawDesc = "" +
 	"\n" +
-	"\fcommon.proto\x12\x06common\x1a\x13easymicro_ext.proto\x1a\x0fmgorm_ext.proto\"\x9a\x01\n" +
-	"\bKVConfig\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value\x12\x14\n" +
-	"\x05extra\x18\x03 \x01(\tR\x05extra:P\x8a\x9d \x06\"\x04bson\x8a\x8e%B\n" +
+	"\fcommon.proto\x12\x06common\x1a\x13easymicro_ext.proto\x1a\x0fmgorm_ext.proto\"\xc7\x02\n" +
+	"\bKVConfig\x12D\n" +
+	"\x03key\x18\x01 \x01(\tB2\x8a\x8e%.\",json:\"key\" bson:\"key\" jsonschema:\"title=键\"R\x03key\x12L\n" +
+	"\x05value\x18\x02 \x01(\tB6\x8a\x8e%2\"0json:\"value\" bson:\"value\" jsonschema:\"title=值\"R\x05value\x12U\n" +
+	"\x05extra\x18\x03 \x01(\tB?\x8a\x8e%;\"9json:\"extra\" bson:\"extra\" jsonschema:\"title=额外信息\"R\x05extra:P\x8a\x9d \x06\"\x04bson\x8a\x8e%B\n" +
 	"\rmconfigcenter\x12\rmconfigcenter\x1a\tkv_config:\x03keyP\x01\x9a\x01\x0fkey value配置B+Z)github.com/995933447/mconfigcenter/commonb\x06proto3"
 
 var (

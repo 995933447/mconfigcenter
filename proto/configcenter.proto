@@ -208,11 +208,11 @@ message ConfigSchema {
     uniq_index_keys:["coll_name"]
     desc: "配置协议"
   };
-  string coll_name = 1; // 集合名称
-  repeated string index_keys = 2; // 普通索引键
-  repeated string uniq_index_keys = 3; // 唯一索引键
-  string json_schema = 4; // json schema
-  string desc = 5;
+  string coll_name = 1 [(mgorm_ext.mgorm_field_opts)= {tags:"json:\"coll_name\" bson:\"coll_name\" jsonschema:\"title=集合名称\""}]; // 集合名称
+  repeated string index_keys = 2 [(mgorm_ext.mgorm_field_opts)= {tags:"json:\"index_keys\" bson:\"index_keys\" jsonschema:\"title=集合索引\""}]; // 普通索引键
+  repeated string uniq_index_keys = 3 [(mgorm_ext.mgorm_field_opts)= {tags:"json:\"uniq_index_keys\" bson:\"uniq_index_keys\" jsonschema:\"title=集合唯一索引\""}]; // 唯一索引键
+  string json_schema = 4 [(mgorm_ext.mgorm_field_opts)= {tags:"json:\"json_schema\" bson:\"json_schema\" jsonschema:\"title=json schema\""}]; // json schema
+  string desc = 5 [(mgorm_ext.mgorm_field_opts)= {tags:"json:\"desc\" bson:\"desc\" jsonschema:\"title=描述信息\""}];
 }
 
 message SetConfigSchemaResp {
